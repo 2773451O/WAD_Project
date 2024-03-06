@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+
+{% extends 'recipes/base.html' %}
+{% load staticfiles %}
+
+
+{% block body_block %}
+<h1>Register for Culinary Carnival</h1>
+{% if registered %}
+<strong>thank you for registering!</strong>
+<a href="{% url 'recipes:home' %}">Return to the homepage.</a><br />
+{% else %}
+<strong>register here!</strong><br />
+<form id="user_form" method="post" action="{% url 'recipes:register' %}"
+    enctype="multipart/form-data"> 
+    {% csrf_token %}
+    <!-- Display each form -->
+    {{ user_form.as_p }}
+    {{ profile_form.as_p }}
+    <!-- Provide a button to click to submit the form. -->
+    <input type="submit" name="submit" value="Register" /> 
+</form>
+{% endif %}
+{% endblock %}

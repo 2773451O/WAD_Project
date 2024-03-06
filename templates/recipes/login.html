@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+
+{% extends 'recipes/base.html' %}
+{% load staticfiles %}
+
+{% block body_block %}
+<h1>Login to Culinary Carnival</h1>
+<form id="login_form" method="post" action="{% url 'recipes:login' %}">
+    {% csrf_token %}
+    username: <input type="text" name="username" value="" size="30" />
+    <br />
+    Password: <input type="password" name="password" value="" size="30" /> <br />
+    <input type="submit" value="submit" />
+</form>
+{% endblock %}
+

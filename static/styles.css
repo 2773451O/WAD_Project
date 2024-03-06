@@ -1,0 +1,116 @@
+body {
+    background-color: #7c7a7a44;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 20px; 
+    background-color: #7c7a7a44;
+    font-weight: bold;
+    font-size: 32px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    margin-right: 10px; /* Adjust as needed */
+}
+
+.links a {
+    margin-left: 10px; /* Adjust as needed */
+    text-decoration: none;
+    color: black; /* Adjust text color as needed */
+}
+
+.links a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.links a:first-child {
+    margin-left: 0;
+}
+
+.categories {
+    display: flex;
+    justify-content: space-between;
+    background-color: #7c7a7a44;
+    padding: 20px 10px;
+    margin: 10px 0px ;
+}
+.popular {
+    display: flex; /* Use flexbox */
+    align-items: center; /* Vertically center the items */
+}
+
+.popular a {
+    color: black;
+    text-align: center;
+    padding: 6px;
+    text-decoration: none;
+    font-size: 20px;
+    border-radius: 5%;
+    font-weight: bold;
+}
+
+.popular a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.search {
+    display: flex;
+    align-items: center;
+}
+
+.search input[type="text"] {
+    width: 200px; 
+    height: 20px; 
+    padding: 10px; 
+    border: none;
+    font-size: 20px;
+    padding: 6px;
+}
+
+.sidebar {
+
+    overflow: auto;
+    padding: 10px;
+    width: 200px;
+    background-color: #7c7a7a44;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+    position: relative;
+    
+  }
+  
+ 
+.sidebar a {
+    display: block;
+    color: black;
+    padding: 16px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 20px;
+}
+  
+  
+.sidebar a:hover{
+    background-color: #ddd;
+    color: black;
+}
+
+
+  /* On screens that are less than 400px, display the bar vertically, instead of horizontally */
+  @media screen and (max-width: 400px) {
+    .sidebar a {
+      text-align: center;
+      float: none;
+    }
+  }
