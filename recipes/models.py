@@ -9,3 +9,12 @@ class UserProfile(models.Model):
     def __str__(self):
         return self.user.username
 
+class Recipe(models.Model):
+    name = models.CharField(max_length = 256, unique = True)
+    recipe = models.CharField(max_length = 2000000)
+
+    class Meta:
+        verbose_name_plural = 'Recipes'
+
+    def __str__(self):
+        return self.name
