@@ -5,7 +5,8 @@ body {
 .navbar {
     display: flex;
     justify-content: space-between;
-    padding: 40px 20px;
+    align-items: center;
+    padding: 40px 20px; 
     background-color: #7c7a7a44;
     font-weight: bold;
     font-size: 32px;
@@ -14,28 +15,16 @@ body {
 .logo {
     display: flex;
     align-items: center;
-   
-    
 }
 
 .logo img {
-    width: 200px;
-    height: 80px;
-    padding-right: 10px;
+    margin-right: 10px; /* Adjust as needed */
 }
-
-.links {
-    margin-right: 10px;
-    display: flex;
-    align-items: center;
-}
-
 
 .links a {
+    margin-left: 10px; /* Adjust as needed */
     text-decoration: none;
-    color: black;
-    padding-right: 10px;
-    padding-left: 10px;
+    color: black; 
 }
 
 .links a:hover {
@@ -46,19 +35,6 @@ body {
 .links a:first-child {
     margin-left: 0;
 }
-
-.profile_photo {
-    float: right;
-    display: flex;
-    align-items: center;
-}
-
-.profile_photo img {
-    width: 75px;
-    height: 75px;
-    border-radius: 50%;
-}
-
 
 
 .categories {
@@ -196,6 +172,21 @@ body {
     background-color: #7c7a7a44;
 }
 
+.login_buttons1 {
+    
+    float: right; 
+    
+    
+}
+
+.login_buttons1 img {
+   
+    border-radius: 50%;
+    display: inline-block;
+    overflow: hidden;
+    width: 75px;
+    width: 75px;
+}
 
 @media screen and (max-width: 400px) {
     .sidebar a {
