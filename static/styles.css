@@ -1,15 +1,15 @@
 body {
-    background-color: #7c7a7a44;
+    background-color: lightgrey;
 }
 
 .navbar {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    padding: 40px 20px; 
-    background-color: #7c7a7a44;
+    padding: 40px 20px;
+    background-color: lightskyblue;
     font-weight: bold;
     font-size: 32px;
+    border-radius: 15px;
 }
 
 .logo {
@@ -18,34 +18,60 @@ body {
 }
 
 .logo img {
-    margin-right: 10px; /* Adjust as needed */
+    width: 150px;
+    height: 120px;
+    padding-right: 10px;
 }
 
+.links {
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+}
+
+
 .links a {
-    margin-left: 10px; /* Adjust as needed */
     text-decoration: none;
-    color: black; /* Adjust text color as needed */
+    color: black;
+    padding-right: 10px;
+    padding-left: 10px;
 }
 
 .links a:hover {
-    background-color: #ddd;
+    background-color: cyan;
     color: black;
+    border-radius: 15px;
 }
 
 .links a:first-child {
     margin-left: 0;
 }
 
+.profile_photo {
+    float: right;
+    display: flex;
+    align-items: center;
+    
+}
+
+.profile_photo img {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    margin-left: 20px;
+    
+}
 .categories {
     display: flex;
     justify-content: space-between;
-    background-color: #7c7a7a44;
+    background-color: lightskyblue;
     padding: 20px 10px;
     margin: 10px 0px ;
+    border-radius: 15px;
 }
 .popular {
-    display: flex; /* Use flexbox */
-    align-items: center; /* Vertically center the items */
+    display: flex; 
+    align-items: center; 
 }
 
 .popular a {
@@ -59,7 +85,7 @@ body {
 }
 
 .popular a:hover {
-    background-color: #ddd;
+    background-color: cyan;
     color: black;
 }
 
@@ -75,22 +101,9 @@ body {
     border: none;
     font-size: 20px;
     padding: 6px;
+    border-radius: 15px;
 }
 
-.sidebar {
-
-    overflow: auto;
-    padding: 10px;
-    width: 200px;
-    background-color: #7c7a7a44;
-    position: fixed;
-    height: 100%;
-    overflow: auto;
-    position: relative;
-    
-  }
-  
- 
 .sidebar a {
     display: block;
     color: black;
@@ -99,18 +112,132 @@ body {
     font-weight: bold;
     font-size: 20px;
 }
-  
-  
+   
 .sidebar a:hover{
-    background-color: #ddd;
+    background-color: cyan;
     color: black;
+    border-radius: 15px;
+}
+
+.sidebar {
+    overflow: auto;
+    padding: 10px;
+    width: 200px;
+    border-radius: 15px;
+    background-color: mintcream;
+    position: fixed;
+    height: 100%;
+}
+
+.home_content {
+    margin-left: 220px; 
+}
+
+.welcome_message {
+    
+    padding-left: 20px; 
+    font-size: 25px;
+    font-weight: bold;
+    
+}
+
+.home_images {
+   
+    margin-right: 10px;
+    margin-left:20px;
+    float: right;
+   
+}
+.home_images img{
+   
+    height : 250px;
+    width: 400px;
+    border-radius: 15px;
+}
+
+.login_register_heading{
+
+    font-size: 25px;
+    padding: 40px 20px; 
+    font-weight: bold;
+    text-decoration: underline;
+
+}
+.login_register_label{
+
+    font-size: 20px;
+    margin: 8px 20px;
+    
+}
+
+.input {
+    width: 35%;
+    padding: 12px 20px;
+    margin: 8px 20px;
+    border: 5px solid #ccc;
+    box-sizing: border-box;
+    display: block; 
+}
+
+.submit {
+    background-color: lightskyblue;
+    color: black;
+    padding: 14px 20px;
+    margin: 8px 20px;
+    border: none;
+    cursor: pointer;
+    clear: both; 
+    width: 35%;
+    border-radius: 15px;
+}
+
+.submit:hover{
+    background-color: cyan;
+    border-radius: 15px;
+}
+
+.login_buttons {
+    
+    float: right; 
+    width: 25%;
+    position: absolute;
+    top: 350px; 
+    right: 50px; 
+    width: 25%;
+    
+}
+
+.login_buttons img {
+   
+    border-radius: 50%;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.login_buttons a {
+   
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px; 
+    padding: 20px 20px;
+    margin: 8px 20px;
+    display: block;
+    margin-bottom: 40px; 
+    color: black;
+    background-color: lightskyblue;
+    border-radius: 15px;
+}
+
+.login_buttons a:hover {
+    background-color: cyan;
+    border-radius: 15px;
 }
 
 
-  /* On screens that are less than 400px, display the bar vertically, instead of horizontally */
-  @media screen and (max-width: 400px) {
+@media screen and (max-width: 400px) {
     .sidebar a {
       text-align: center;
       float: none;
+      
     }
-  }
+}

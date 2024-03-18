@@ -2,10 +2,28 @@
 
 {% extends 'recipes/base.html' %}
 {% load staticfiles %}
+
 {% block body_block %} 
-<div class="sidebar">
-    <a href="category1">category1</a>
-    <a href="#category2">category2</a>
-    <a href="#category3">category3</a>
+<div class="container">
+    <div class="sidebar">
+        <a href="#category1">category1</a>
+        <a href="#category2">category2</a>
+        <a href="#category3">category3</a>
+    </div>
+    <div class="home_content">
+        <div class="home_images">
+            <img src="{{ MEDIA_URL }}lasanga.png" id = 'home_pictures' />
+            
+        </div>
+        <div>
+            <p class="welcome_message">
+                Welcome to Culinary carnival!<br>
+                This is a friendly website for cooks of any experience to find an share recipes.<br>
+                Please browse our various categories or take a look at the most popular recipes on offer.<br>
+                If you have a recipe to share we'd all love to hear it you can upload it from the profile section if you have logged in.<br>
+                We hope you enjoy ur stay!
+            </p>
+        </div>
+    </div>
 </div>
 {% endblock %}
