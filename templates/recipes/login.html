@@ -4,20 +4,20 @@
 {% load staticfiles %}
 
 {% block body_block %}
-<div class= login_register_heading>
+<div id= heading>
     Login to Culinary Carnival
 </div>
-<div class="container">
+
     <form class="form" role="form" method="post" action="{% url 'recipes:login' %}">
     {% csrf_token %}
     <label class="login_register_label">Username or Email:</label>
-    <input type="text" name="username" id="id_username" class="input" placeholder="Username or Email" required autofocus>
+    <input type="text" name="username" class="input" placeholder="Username or Email" required autofocus>
     <label class="login_register_label">Password:</label>
-    <input type="password" name="password" id="id_password" class="input" placeholder="Password" required>
+    <input type="password" name="password" class="input" placeholder="Password" required>
     <button class="submit" type="submit" value="Submit">Sign in</button>
     </form> 
-</div>
-<div class="login_buttons">
+
+<div class="login_register_right">
     <a href="{% url 'recipes:register' %}">Register</a>
     <a href="{% url 'recipes:password_reset_form' %}">Forgot Password</a>
 </div>

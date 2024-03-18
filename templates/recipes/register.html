@@ -5,44 +5,43 @@
 
 
 {% block body_block %}
-<div class = login_register_heading>
-    Register for Culinary Carnival
-</div>
-<div class="container">
+    <div id = heading>
+        Register for Culinary Carnival
+    </div>
     <div class="form-group">
         <form role="form" method="post" action="{% url 'recipes:register' %}" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="form-group">
                 <p class="required">
                     <label class="login_register_label" for="id_username">Username:</label>
-                    <input class="input" id="id_username" maxlength="30" name="username" type="text" />
+                    <input class="input" maxlength="30" name="username" type="text" />
                     <span class="login_register_label">
                         Required. 30 characters or fewer. Letters, digits and @/./+/-/_ only.
                     </span>
                 </p>
                 <p class="required">
                     <label class="login_register_label" for="id_first">First name:</label>
-                    <input class="input" id="id_first" name="first_name" type="text" />
+                    <input class="input" name="first_name" type="text" />
                 </p>
                 <p class="required">
                     <label class="login_register_label" for="id_last">Last name:</label>
-                    <input class="input" id="id_last" name="last_name" type="text" />
+                    <input class="input" name="last_name" type="text" />
                 </p>
                 <p class="required">
                     <label class="login_register_label" for="id_email">E-mail:</label>
-                    <input class="input" id="id_email" name="email" type="email" />
+                    <input class="input" name="email" type="email" />
                 </p>
                 <p class="required">
                     <label class="login_register_label" for="id_password">Password:</label>
-                    <input class="input" id="id_password" name="password" type="password" />
+                    <input class="input" name="password" type="password" />
                 </p>
             </div>
             
-            <div class="login_buttons">
+            <div class="login_register_right">
                 <label class="login_register_label" for="id_picture">Profile photo:</label>
-                <input class="login_register_label" id="id_picture" name="picture" type="file" accept="image/*" onchange="previewImage(event)">
+                <input class="login_register_label" name="picture" type="file" accept="image/*" onchange="previewImage(event)">
                 <div id="imagePreview">
-                    <img id="placeholderPhoto" class="profile-photo" src="{{ MEDIA_URL }}photo_placeholder.png" alt="Profile Photo" height="200" width="200" />
+                    <img src="{{ MEDIA_URL }}photo_placeholder.png" alt="Profile Photo" height="200" width="200" />
                 </div>
             </div>
 
@@ -50,9 +49,4 @@
             
         </form>
     </div>
-
-    </form>
-
-</div>
-
 {% endblock %}
