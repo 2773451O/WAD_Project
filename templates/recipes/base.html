@@ -35,8 +35,14 @@
                         <img src="{{ user.userprofile.picture.url }}">
                     </div>
                 {% else %}
-                    <a href="{% url 'recipes:register' %}">Register</a>
-                    <a href="{% url 'recipes:login' %}">Login</a>
+                    {% if Page != 'Register' %}
+                        <a href="{% url 'recipes:register' %}">Register</a>
+                    {% endif %}
+
+                    {% if Page != 'Log in' %}
+                        <a href="{% url 'recipes:login' %}">Login</a>
+                    {% endif %}
+                    
                 {% endif %}
             </div>
         </div>

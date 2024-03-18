@@ -1,14 +1,15 @@
 body {
-    background-color: #7c7a7a44;
+    background-color: lightgrey;
 }
 
 .navbar {
     display: flex;
     justify-content: space-between;
     padding: 40px 20px;
-    background-color: #7c7a7a44;
+    background-color: lightskyblue;
     font-weight: bold;
     font-size: 32px;
+    border-radius: 15px;
 }
 
 .logo {
@@ -37,8 +38,9 @@ body {
 }
 
 .links a:hover {
-    background-color: #ddd;
+    background-color: cyan;
     color: black;
+    border-radius: 15px;
 }
 
 .links a:first-child {
@@ -62,9 +64,10 @@ body {
 .categories {
     display: flex;
     justify-content: space-between;
-    background-color: #7c7a7a44;
+    background-color: lightskyblue;
     padding: 20px 10px;
     margin: 10px 0px ;
+    border-radius: 15px;
 }
 .popular {
     display: flex; 
@@ -82,7 +85,7 @@ body {
 }
 
 .popular a:hover {
-    background-color: #ddd;
+    background-color: cyan;
     color: black;
 }
 
@@ -98,19 +101,9 @@ body {
     border: none;
     font-size: 20px;
     padding: 6px;
+    border-radius: 15px;
 }
 
-.sidebar {
-    overflow: auto;
-    padding: 10px;
-    width: 200px;
-    background-color: #7c7a7a44;
-
-    height: 100%;
-    position: absolute;
-}
-
- 
 .sidebar a {
     display: block;
     color: black;
@@ -121,15 +114,17 @@ body {
 }
    
 .sidebar a:hover{
-    background-color: #ddd;
+    background-color: cyan;
     color: black;
+    border-radius: 15px;
 }
 
 .sidebar {
     overflow: auto;
     padding: 10px;
     width: 200px;
-    background-color: #7c7a7a44;
+    border-radius: 15px;
+    background-color: mintcream;
     position: fixed;
     height: 100%;
 }
@@ -157,6 +152,7 @@ body {
    
     height : 250px;
     width: 400px;
+    border-radius: 15px;
 }
 
 .login_register_heading{
@@ -173,6 +169,7 @@ body {
     margin: 8px 20px;
     
 }
+
 .input {
     width: 35%;
     padding: 12px 20px;
@@ -183,7 +180,7 @@ body {
 }
 
 .submit {
-    background-color: dodgerblue;
+    background-color: lightskyblue;
     color: black;
     padding: 14px 20px;
     margin: 8px 20px;
@@ -191,6 +188,12 @@ body {
     cursor: pointer;
     clear: both; 
     width: 35%;
+    border-radius: 15px;
+}
+
+.submit:hover{
+    background-color: cyan;
+    border-radius: 15px;
 }
 
 .login_buttons {
@@ -221,7 +224,13 @@ body {
     display: block;
     margin-bottom: 40px; 
     color: black;
-    background-color: #7c7a7a44;
+    background-color: lightskyblue;
+    border-radius: 15px;
+}
+
+.login_buttons a:hover {
+    background-color: cyan;
+    border-radius: 15px;
 }
 
 
