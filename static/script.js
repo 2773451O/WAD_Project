@@ -33,7 +33,6 @@ function changeImageHomepage() {
 timer = setInterval(changeImageHomepage, 5000);
 
 // Not used but useful to have set up
-
 function stop() {
     clearInterval(timer);
 }
