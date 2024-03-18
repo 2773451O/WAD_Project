@@ -14,13 +14,11 @@ body {
 .logo {
     display: flex;
     align-items: center;
-   
-    
 }
 
 .logo img {
-    width: 200px;
-    height: 80px;
+    width: 150px;
+    height: 120px;
     padding-right: 10px;
 }
 
@@ -51,16 +49,16 @@ body {
     float: right;
     display: flex;
     align-items: center;
+    
 }
 
 .profile_photo img {
     width: 75px;
     height: 75px;
     border-radius: 50%;
+    margin-left: 20px;
+    
 }
-
-
-
 .categories {
     display: flex;
     justify-content: space-between;
@@ -69,8 +67,8 @@ body {
     margin: 10px 0px ;
 }
 .popular {
-    display: flex; /* Use flexbox */
-    align-items: center; /* Vertically center the items */
+    display: flex; 
+    align-items: center; 
 }
 
 .popular a {
@@ -103,18 +101,15 @@ body {
 }
 
 .sidebar {
-
     overflow: auto;
     padding: 10px;
     width: 200px;
     background-color: #7c7a7a44;
-    position: fixed;
+
     height: 100%;
-    overflow: auto;
-    position: relative;
-    
+    position: absolute;
 }
-  
+
  
 .sidebar a {
     display: block;
@@ -130,10 +125,43 @@ body {
     color: black;
 }
 
+.sidebar {
+    overflow: auto;
+    padding: 10px;
+    width: 200px;
+    background-color: #7c7a7a44;
+    position: fixed;
+    height: 100%;
+}
+
+.home_content {
+    margin-left: 220px; 
+}
+
+.welcome_message {
+    
+    padding-left: 20px; 
+    font-size: 25px;
+    font-weight: bold;
+    
+}
+
+.home_images {
+   
+    margin-right: 10px;
+    margin-left:20px;
+    float: right;
+   
+}
+.home_images img{
+   
+    height : 250px;
+    width: 400px;
+}
+
 .login_register_heading{
 
     font-size: 25px;
-   
     padding: 40px 20px; 
     font-weight: bold;
     text-decoration: underline;
