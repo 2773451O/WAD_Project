@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+
+{% extends 'recipes/base.html' %}
+{% load staticfiles %}
+
+{% block body_block %}
+  <h2>Edit Profile</h2>
+  <p>Hello {{ user.username }}</p>
+  <form action ="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save changes</button>
+  </form>
+{% endblock %}
