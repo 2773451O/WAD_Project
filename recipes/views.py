@@ -127,3 +127,21 @@ def reset_password(request):
     else:
         form = PasswordResetForm()
     return render(request, 'recipes/password_reset_form.html', {'form': form})
+
+@login_required
+def user_edit_profile(request):
+
+    user_profile, created = UserProfile.objects.get_or_create(user=request.user)
+
+    if request.method == 'POST':
+        form = UserProfileForm(request.POST, request.FILES, instance=user_profile)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+    else:
+        form = UserProfileForm(instance=user_profile)
+
+    
+    context_dict = {'form' : form,
+                    'Page' : 'Edit Profile',}
+    return render(request, 'recipes/edit_profile.html', context_dict)
