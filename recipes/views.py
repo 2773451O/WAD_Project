@@ -1,15 +1,17 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from django.shortcuts import redirect
 from django.urls import reverse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from datetime import datetime
-from recipes.forms import UserForm, UserProfileForm
+from recipes.forms import UserForm, UserProfileForm, SearchForm
 from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import PasswordResetForm
-from recipes.models import UserProfile
+from recipes.models import UserProfile, Recipe
+from django.db.models import Q
+
 
 
 
@@ -145,3 +147,28 @@ def user_edit_profile(request):
     context_dict = {'form' : form,
                     'Page' : 'Edit Profile',}
     return render(request, 'recipes/edit_profile.html', context_dict)
+
+def search(request):
+    if request.method == 'GET':
+        form = SearchForm(request.GET)
+        if form.is_valid():
+            query = form.cleaned_data['query']
+            recipe_results = Recipe.objects.filter(
+                Q(title__icontains=query) |
+                Q(ingredients__icontains=query) |
+                Q(directions__icontains=query) |
+                Q(difficulty__icontains=query) |
+                Q(category__name__icontains=query) |
+                Q(author__username__icontains=query)
+                
+            ).distinct()  # removes duplicates
+            return render(request, 'recipes/search.html', context={'recipe_results': recipe_results, 'query': query})
+        else:
+            form = SearchForm()
+        return render(request, 'recipes/search.html', context={'form': form})
+    
+def recipe(request, recipeID):
+    recipe = get_object_or_404(Recipe, id=recipeID)
+    steps = recipe.directions.split("\n")
+    ingredients = recipe.ingredients.split("\n")
+    return render(request, 'recipes/recipe.html', context={'recipe': recipe, 'steps': steps, 'ingredients': ingredients})
