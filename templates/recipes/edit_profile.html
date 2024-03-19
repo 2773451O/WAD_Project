@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block body_block %}
-<div class="login_register_heading">
+<div id="heading">
     Edit Profile
 </div>
 <div class="container">
@@ -17,7 +17,7 @@
           <textarea class="input" id="id_favourite_recipes" name="favourite_recipes">{{ user.userprofile.favourite_recipes }}</textarea>
       </div>
 
-      <div class="login_buttons">
+      <div class="display_right">
           <label class="login_register_label" for="id_picture">Change Profile Photo:</label>
           <input type="file" class="login_register_label" id="id_picture" name="picture" accept="image/*" onchange="previewImage(event)">
           <div id="imagePreview">
