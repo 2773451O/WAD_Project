@@ -19,16 +19,15 @@ function previewImage(event) {
 }
 
 var images = ['carrots.png', 'chickencurry.png', 'pasta.png', 'carbonara.png','lasanga.png'];
+
 var index = 0; 
 var timer; 
 
 function changeImageHomepage() {
     var image = document.getElementById('home_pictures');
     image.src = '/media/'+images[index]; 
-
     index = (index + 1) % images.length; 
 }
-
 
 timer = setInterval(changeImageHomepage, 5000);
 
@@ -36,3 +35,4 @@ timer = setInterval(changeImageHomepage, 5000);
 function stop() {
     clearInterval(timer);
 }
+

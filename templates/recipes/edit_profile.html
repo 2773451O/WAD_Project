@@ -4,7 +4,7 @@
 {% load staticfiles %}
 
 {% block body_block %}
-  <h2>Edit Profile</h2>
+  <div id="heading">Edit Profile</div>
   <p>Hello {{ user.username }}</p>
   <form action ="" method="POST" enctype="multipart/form-data">
     {% csrf_token %}

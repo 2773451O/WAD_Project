@@ -25,7 +25,7 @@ def user_login(request):
     context_dict['Page'] = 'Log in'
 
     if request.method == 'POST':
-        username = None  # Initialize username variable
+        username = None  
 
         username_or_email = request.POST.get('username')
         password = request.POST.get('password')
