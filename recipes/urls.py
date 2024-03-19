@@ -13,4 +13,7 @@ urlpatterns = [
     path('logout/', views.user_logout, name='logout'),
     path('password_reset_form/', views.reset_password, name='password_reset_form'), 
     path('edit_profile/', views.user_edit_profile, name='edit_profile'), 
+    path('search/', views.search, name='search'),
+    path('recipe/<int:recipeID>/', views.recipe, name='recipe')
+
 ]
