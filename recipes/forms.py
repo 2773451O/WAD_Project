@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User 
-from recipes.models import UserProfile
+from recipes.models import UserProfile, Recipe
 
 class UserForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput())
@@ -12,9 +12,16 @@ class UserForm(forms.ModelForm):
 class UserProfileForm(forms.ModelForm): 
     class Meta:
         model = UserProfile
-        fields = ('picture',)
+        fields = ('picture', 'bio', 'favourite_recipes',)
 
-    
+
+class SearchForm(forms.ModelForm):
+    query = forms.CharField(label='Search', max_length=100)
+
+    class Meta:
+        model = Recipe
+        fields = ('query',)
+
 
     
         
