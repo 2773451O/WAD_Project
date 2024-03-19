@@ -85,17 +85,34 @@ body {
     background-color: cyan;
     color: black;
     border-radius: 15px;
+    
 }
 
 .categories input[type="text"] {
     width: 200px; 
     height: 20px; 
-    padding: 10px; 
     border: none;
     font-size: 20px;
     padding: 6px;
     border-radius: 15px;
 }
+
+.search_btn{
+    border-radius: 15px;
+    padding: 6px; 
+    border: none;
+    background-color: lightskyblue;color: black;
+    text-align: center;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.search_btn:hover{
+    background-color: cyan;
+}
+
 
 /*Sidebar*/
 .sidebar {
@@ -186,8 +203,9 @@ body {
     background-color: cyan;
     border-radius: 15px;
 }
+
 /*Profile photo and buttons on register page*/
-.login_register_right {
+.display_right {
     float: right; 
     width: 25%;
     position: absolute;
@@ -196,14 +214,14 @@ body {
     width: 25%;   
 }
 
-.login_register_right img {
+.display_right img {
    
     border-radius: 50%;
     display: inline-block;
     overflow: hidden;
 }
 
-.login_register_right a {
+.display_right a {
    
     text-align: center;
     font-weight: bold;
@@ -216,10 +234,11 @@ body {
     border-radius: 15px;
 }
 
-.login_register_right a:hover {
+.display_right a:hover {
     background-color: cyan;
     border-radius: 15px;
 }
+
 
 @media screen and (max-width: 400px) {
     .sidebar a {

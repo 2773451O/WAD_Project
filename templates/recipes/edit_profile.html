@@ -1,14 +1,36 @@
 <!DOCTYPE html>
-
 {% extends 'recipes/base.html' %}
-{% load staticfiles %}
+{% load static %}
 
 {% block body_block %}
-  <div id="heading">Edit Profile</div>
-  <p>Hello {{ user.username }}</p>
-  <form action ="" method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Save changes</button>
+<div id="heading">
+    Edit Profile
+</div>
+<div class="container">
+  <form method="POST" action="" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="form-group">
+          <label class="login_register_label" for="id_bio">Bio:</label>
+          <textarea class="input" id="id_bio" name="bio">{{ user.userprofile.bio }}</textarea>
+
+          <label class="login_register_label" for="id_favourite_recipes">Favourite Recipes:</label>
+          <textarea class="input" id="id_favourite_recipes" name="favourite_recipes">{{ user.userprofile.favourite_recipes }}</textarea>
+      </div>
+
+      <div class="display_right">
+          <label class="login_register_label" for="id_picture">Change Profile Photo:</label>
+          <input type="file" class="login_register_label" id="id_picture" name="picture" accept="image/*" onchange="previewImage(event)">
+          <div id="imagePreview">
+              {% if user.userprofile.picture %}
+                  <img id="currentPhoto" class="profile-photo" src="{{ user.userprofile.picture.url }}" alt="Profile Photo" height="200" width="200" />
+              {% else %}
+                  <img id="placeholderPhoto" class="profile-photo" src="{% static 'photo_placeholder.png' %}" alt="Profile Photo" height="200" width="200" />
+              {% endif %}
+          </div>
+      </div>
+
+      <button type="submit" class="submit">Save changes</button>
   </form>
+</div>
+
 {% endblock %}

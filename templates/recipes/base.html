@@ -53,9 +53,11 @@
                 <a href="#most_liked_recipes">Most Liked Recipes</a>
                 <a href="#most_viewed_recipes">Most Viewed Recipes</a>
             </div> 
-            <div class="search">
-                <input type="text" placeholder="Search...">
-            </div>
+            <form method="get" action="{% url 'recipes:search' %}">
+                <input type="text" name="query" placeholder="Search...">
+                <button type="submit" class="search_btn">Search</button>
+            </form>
+
         </div>
 
         <div>
