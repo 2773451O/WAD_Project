@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+{% extends 'recipes/base.html' %}
+{% load static %}
+
+{% block body_block %}
+<div class="container">
+    <div class="sidebar">
+        <ul>
+            {% for category in categories%}
+                <li><a href="{% url 'recipes:category_detail' category.slug %}">{{ category.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="content">
+        <!-- Content next to the sidebar -->
+        <div class="recipes-list">
+            {% for recipe in recipes %}
+                <div class="recipe">
+                    <div class="recipe-text">
+                        <h3><a href="{% url 'recipes:recipe_page' recipe.slug %}">{{ recipe.title }}</a></h3>
+
+                        <div class="recipe-content">
+                            <p>{{ recipe.description }}</p>
+                        </div>
+                    </div>
+                    <img src="{{ recipe.image.url }}" alt="{{ recipe.title }}" class="recipe-image">
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

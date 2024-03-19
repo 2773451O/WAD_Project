@@ -5,9 +5,11 @@
 
 {% block body_block %} 
     <div class="sidebar">
-        <a href="#category1">category1</a>
-        <a href="#category2">category2</a>
-        <a href="#category3">category3</a>
+        <ul>
+            {% for category in categories %}
+            <li><a href="{% url 'recipes:category_detail' category.slug %}">{{ category.name }}</a></li>
+            {% endfor %}
+        </ul>
     </div>
     <div class="home_content">
         <div class="home_images">

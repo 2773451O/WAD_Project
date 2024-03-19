@@ -9,7 +9,7 @@ from recipes.forms import UserForm, UserProfileForm, SearchForm
 from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import PasswordResetForm
-from recipes.models import UserProfile, Recipe
+from recipes.models import UserProfile, Recipe, Category
 from django.db.models import Q
 
 
@@ -17,8 +17,8 @@ from django.db.models import Q
 
 def home(request):
     
-    context_dict = {}
-    context_dict['Page'] = 'Home'
+    categories = Category.objects.all()  # Query all categories from the database
+    context_dict = {'Page': 'Home', 'categories': categories}
     response = render(request, 'recipes/home.html', context=context_dict)
     return response
     
@@ -158,7 +158,7 @@ def search(request):
                 Q(ingredients__icontains=query) |
                 Q(directions__icontains=query) |
                 Q(difficulty__icontains=query) |
-                Q(category__name__icontains=query) |
+                Q(categories__name__icontains=query) |
                 Q(author__username__icontains=query)
                 
             ).distinct()  # removes duplicates
@@ -172,3 +172,29 @@ def recipe(request, recipeID):
     steps = recipe.directions.split("\n")
     ingredients = recipe.ingredients.split("\n")
     return render(request, 'recipes/recipe.html', context={'recipe': recipe, 'steps': steps, 'ingredients': ingredients})
+
+def category_detail(request, category_slug):
+    context_dict = {}
+    try:
+        categories = Category.objects.all()
+        category = Category.objects.get(slug=category_slug)
+        recipes = Recipe.objects.filter(categories=category)
+        context_dict['Page'] = category.name
+        context_dict['category']=category
+        context_dict['recipes']= recipes
+        context_dict['categories'] = categories
+
+    except Category.DoesNotExist:
+        context_dict['category'] =None
+        context_dict['recipes'] = None
+        context_dict['categories'] = Category.objects.all()
+
+    return render(request, 'recipes/category_detail.html', context=context_dict)
+
+def recipe_page(request, recipe_slug):
+    context_dict = {}
+    recipe = get_object_or_404(Recipe, slug=recipe_slug)
+    context_dict['Page']= recipe.title
+    context_dict['recipe'] = recipe
+ 
+    return render(request, 'recipes/recipe_page.html', context=context_dict)
