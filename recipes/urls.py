@@ -14,6 +14,7 @@ urlpatterns = [
     path('password_reset_form/', views.reset_password, name='password_reset_form'), 
     path('edit_profile/', views.user_edit_profile, name='edit_profile'), 
     path('search/', views.search, name='search'),
-    path('recipe/<int:recipeID>/', views.recipe, name='recipe')
-
+    path('recipe/<int:recipeID>/', views.recipe, name='recipe'),
+    path('recipe/<slug:recipe_slug>/', views.recipe_page, name='recipe_page'),
+    path('category/<slug:category_slug>/', views.category_detail, name='category_detail'),
 ]
