@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+{% extends 'recipes/base.html' %}
+
+{% block heading %} 
+Search: {{ query }}
+{% endblock %}
+
+
+{% load static %}
+
+{% block body_block %} 
+<h1>Search Results for "{{ query }}" </h1>
+{% if recipe_results %}
+    <ul>
+        {% for recipe in recipe_results %}
+            <li><a href="{% url 'recipes:recipe' recipe.id %}"> {{ recipe.title }} - {{ recipe.author }}</a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No results found.</p>
+{% endif %}
+{% endblock %}

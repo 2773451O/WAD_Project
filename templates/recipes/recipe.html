@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+{% extends 'recipes/base.html' %}
+
+{% block heading %} 
+{{ recipe.title }}
+{% endblock %}
+
+{% block body_block %}
+
+
+
+<h1>{{ recipe.title }} - {{ recipe.author }}</h1>
+<div class="center">
+
+    <h3><b>Views:</b> {{ recipe.views }}   <b>Likes:</b> {{ recipe.likes }}</h3>
+
+    <p><b>Category:</b> {{ recipe.category }} </p>
+
+    <p><b>Difficulty:</b> {{ recipe.difficulty }} </p>
+
+
+    <p><b>Ingredients:</b></p>
+    {% for i in ingredients %}
+    <li>{{ i }}</li>
+    {% endfor %}
+
+    <p><b>Directions:</b></p>
+    {% for step in steps %}
+    <li>{{ step }}</li>
+    {%endfor%}
+</div>
+
+{% endblock %}
+

@@ -1,15 +1,17 @@
+/*Base Page*/
 body {
-    background-color: #7c7a7a44;
+    background-color: lightgrey;
 }
 
+/*Navbar and contents*/
 .navbar {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    padding: 40px 20px; 
-    background-color: #7c7a7a44;
+    padding: 40px 20px;
+    background-color: lightskyblue;
     font-weight: bold;
     font-size: 32px;
+    border-radius: 15px;
 }
 
 .logo {
@@ -18,34 +20,53 @@ body {
 }
 
 .logo img {
-    margin-right: 10px; /* Adjust as needed */
+    width: 150px;
+    height: 120px;
+    padding-right: 10px;
+}
+
+.links {
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
 }
 
 .links a {
-    margin-left: 10px; /* Adjust as needed */
     text-decoration: none;
-    color: black; /* Adjust text color as needed */
+    color: black;
+    padding-right: 10px;
+    padding-left: 10px;
 }
 
 .links a:hover {
-    background-color: #ddd;
+    background-color: cyan;
     color: black;
+    border-radius: 15px;
 }
 
-.links a:first-child {
-    margin-left: 0;
+.profile_photo {
+    float: right;
+    display: flex;
+    align-items: center; 
+    margin-left: 10px; 
 }
 
+.profile_photo img {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    margin-left: 20px;
+}
+
+/*Popular categories bar*/
 .categories {
     display: flex;
     justify-content: space-between;
-    background-color: #7c7a7a44;
+    background-color: lightskyblue;
     padding: 20px 10px;
     margin: 10px 0px ;
-}
-.popular {
-    display: flex; /* Use flexbox */
-    align-items: center; /* Vertically center the items */
+    border-radius: 15px;
+    align-items: center; 
 }
 
 .popular a {
@@ -54,43 +75,61 @@ body {
     padding: 6px;
     text-decoration: none;
     font-size: 20px;
-    border-radius: 5%;
+    border-radius: 15%;
     font-weight: bold;
+    margin-left: 20px;
+
 }
 
 .popular a:hover {
-    background-color: #ddd;
+    background-color: cyan;
     color: black;
+    border-radius: 15px;
+    
 }
 
-.search {
-    display: flex;
-    align-items: center;
-}
-
-.search input[type="text"] {
+.categories input[type="text"] {
     width: 200px; 
     height: 20px; 
-    padding: 10px; 
     border: none;
     font-size: 20px;
     padding: 6px;
+    border-radius: 15px;
 }
 
-.sidebar {
+.search_btn{
+    border-radius: 15px;
+    padding: 6px; 
+    border: none;
+    background-color: lightskyblue;color: black;
+    text-align: center;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 10px;
+}
 
+.search_btn:hover{
+    background-color: cyan;
+}
+
+.container{
+    display:flex;
+}
+
+
+/*Sidebar*/
+.sidebar {
+    float: left;
     overflow: auto;
     padding: 10px;
     width: 200px;
-    background-color: #7c7a7a44;
-    position: fixed;
-    height: 100%;
-    overflow: auto;
+    border-radius: 15px;
+    background-color: mintcream;
     position: relative;
-    
-  }
-  
- 
+    height: 100%;
+}
+
 .sidebar a {
     display: block;
     color: black;
@@ -98,19 +137,204 @@ body {
     text-decoration: none;
     font-weight: bold;
     font-size: 20px;
+    background-color: lightblue;
+    margin-bottom: 10px;
+    border-radius: 15px;
 }
-  
-  
+   
 .sidebar a:hover{
-    background-color: #ddd;
+    background-color: cyan;
     color: black;
+    border-radius: 15px;
 }
 
 
-  /* On screens that are less than 400px, display the bar vertically, instead of horizontally */
-  @media screen and (max-width: 400px) {
+/*Home Page*/
+.home_content {
+    margin-left: 220px; 
+}
+
+.welcome_message {
+    padding-left: 20px; 
+    font-size: 20px;
+    font-weight: bold;
+    width: 55%;
+}
+
+.home_images {
+    margin-left:20px;
+    float: right;
+}
+
+.home_images img{
+    height : 250px;
+    width: 400px;
+    border-radius: 15px;
+}
+
+/*Login + Register Page*/
+#heading{
+    font-size: 28px;
+    padding: 40px 20px; 
+    font-weight: bold;
+    text-decoration: underline;
+
+}
+.login_register_label{
+    font-size: 20px;
+    margin: 8px 20px;
+}
+
+.input {
+    width: 35%;
+    padding: 12px 20px;
+    margin: 8px 20px;
+    border: 5px solid turquoise;
+    box-sizing: border-box;
+    display: block; 
+}
+
+#edit_profile  {
+    width: 500px;
+    
+}
+
+.submit {
+    background-color: lightskyblue;
+    color: black;
+    padding: 14px 20px;
+    margin: 8px 20px;
+    border: none;
+    width: 35%;
+    border-radius: 15px;
+}
+
+.submit:hover{
+    background-color: cyan;
+    border-radius: 15px;
+}
+
+/*Profile photo and buttons on register page*/
+.display_right {
+    float: right; 
+    width: 25%;
+    position: absolute;
+    top: 350px; 
+    right: 50px; 
+    width: 25%;   
+}
+
+.display_right img {
+   
+    border-radius: 50%;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.display_right a {
+   
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px; 
+    padding: 20px 20px;
+    display: block;
+    margin: 20px; 
+    color: black;
+    background-color: lightskyblue;
+    border-radius: 15px;
+}
+
+.display_right a:hover {
+    background-color: cyan;
+    border-radius: 15px;
+}
+
+
+
+
+.content {
+    flex-grow: 1; /* How much space to allocate in the remaining space */
+    margin: 20px;
+    margin-top: 0px;
+    background-color: lightskyblue; 
+    border-radius: 15px;
+}
+
+.recipes-list {
+    display: flex; /* Set as Flex container*/
+    flex-direction: column;
+    padding: 20px;
+}
+
+.recipe {
+    border: 1px solid #ddd;
+    
+    padding: 20px;
+    background-color: mintcream;
+    display: flex;
+    justify-content: space-between; /* Alignment of child elements(horizontal)*/
+    align-items: center;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    border-radius: 15px;
+  
+
+}
+.recipe-text {
+  
+    flex-grow: 1;
+   
+}
+
+.recipe:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.recipe img {
+    border-radius: 15px;
+    width: auto;
+    height: 150px;
+    object-fit: cover;
+    margin-right: 20px;
+}
+
+.recipe-content {
+    max-width: calc(100% - 170px); 
+}
+
+.recipe h3 {
+    margin-top: 0;
+    font-size: 22px;
+    font-weight: bold;
+    color: #333;
+}
+
+.recipe p {
+    font-size: 18px;
+    color: #666;
+    margin-top: 8px;
+}
+
+@media (max-width: 768px) {
+    .recipes-list {
+        padding: 10px;
+    }
+    .recipe {
+        flex-direction: column;
+    }
+     .recipe img {
+        width: 80%;
+        height: auto;
+        margin-bottom: 20px;
+    }
+    .recipe-content {
+        max-width: 100%;
+    }
+}
+
+@media screen and (max-width: 400px) {
     .sidebar a {
       text-align: center;
       float: none;
     }
-  }
+}

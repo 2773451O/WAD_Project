@@ -4,13 +4,27 @@
 {% load staticfiles %}
 
 {% block body_block %}
-<h1>Login to Culinary Carnival</h1>
-<form id="login_form" method="post" action="{% url 'recipes:login' %}">
+<div id= heading>
+    Login to Culinary Carnival
+</div>
+
+    <form class="form" role="form" method="post" action="{% url 'recipes:login' %}">
     {% csrf_token %}
-    username: <input type="text" name="username" value="" size="30" />
-    <br />
-    Password: <input type="password" name="password" value="" size="30" /> <br />
-    <input type="submit" value="submit" />
-</form>
+    <label class="login_register_label">Username or Email:</label>
+    <input type="text" name="username" class="input" placeholder="Username or Email" required autofocus>
+    <label class="login_register_label">Password:</label>
+    <input type="password" name="password" class="input" placeholder="Password" required>
+    <button class="submit" type="submit" value="Submit">Sign in</button>
+    </form> 
+
+<div class="display_right">
+    <a href="{% url 'recipes:register' %}">Register</a>
+    <a href="{% url 'recipes:password_reset_form' %}">Forgot Password</a>
+</div>
+
+<!-- Add the popup modal -->
+
+
 {% endblock %}
+
 

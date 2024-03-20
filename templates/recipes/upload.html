@@ -1,4 +1,41 @@
-<!DOCTYPE html>
-
 {% extends 'recipes/base.html' %}
 {% load staticfiles %}
+
+{% block title_block %}
+    Upload Recipe
+{% endblock %}
+{% block body_block %}
+    {% if user.is_authenticated %}
+        <h1>Upload a Recipe</h1>
+        <div>
+
+            <form id="upload_form" method="post" action="{% url 'recipes:upload' %}" enctype="multipart/form-data">
+                {% csrf_token %}
+                <label>Title:</label>
+                <input type="text" name="title" class="input" placeholder="title" required autofocus>
+                <label >Description:</label>
+                <input type="text" name="description" class="input" placeholder="description" required>
+                <label>Categories:</label>
+                <input type="text" name="categories" class="input" placeholder="categories" required >
+                <label >Ingredients:</label>
+                <input type="text" name="ingredients" class="input" placeholder="ingredients" required>
+                <label>Difficulty:</label>
+                <input type="text" name="difficulty" class="input" placeholder="difficulty" required >
+                <label >Directions:</label>
+                <input type="text" name="directions" class="input" placeholder="directions" required>
+                <label>Image:</label>
+                <input type="file" name="image" class="input" placeholder="image">
+             
+                
+            
+               <!--<button type="submit" class="submit">Submit</button>-->
+                <input type="submit" name="submit" value="Upload Recipe" />
+
+
+            </form>
+        {% else %}
+            <a href="{% url 'recipes:home' %}">Return to the homepage.</a><br />
+        {% endif %}
+
+        </div>
+{% endblock %}
