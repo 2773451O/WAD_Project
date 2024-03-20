@@ -14,10 +14,10 @@ function previewImage(event) {
     };
 
     reader.readAsDataURL(input.files[0]);
-
+    
     placeholderPhoto.style.display = 'none';
+    
 }
-
 var images = ['carrots.png', 'chickencurry.png', 'pasta.png', 'carbonara.png','lasanga.png'];
 
 var index = 0; 

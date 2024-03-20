@@ -28,11 +28,10 @@ def populate():
         author, _ = User.objects.get_or_create(username=author_name)
 
         # Create the recipe object
-        recipe = Recipe.objects.create(category=category, author=author, **recipe_data)
-
+        recipe = Recipe.objects.create(author=author, **recipe_data)
+        recipe.categories.set([category])  # Set the categories for the recipe
 
 
 if __name__ == '__main__':
     print('Starting WAD population script...')
     populate()
-

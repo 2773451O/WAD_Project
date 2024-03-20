@@ -120,6 +120,7 @@ body {
 
 /*Sidebar*/
 .sidebar {
+    float: left;
     overflow: auto;
     padding: 10px;
     width: 200px;
@@ -193,6 +194,11 @@ body {
     display: block; 
 }
 
+#edit_profile  {
+    width: 500px;
+    
+}
+
 .submit {
     background-color: lightskyblue;
     color: black;
@@ -248,8 +254,10 @@ body {
 
 .content {
     flex-grow: 1; /* How much space to allocate in the remaining space */
-    padding: 20px; /* Adjust as needed */
-    background-color: #ffffff; 
+    margin: 20px;
+    margin-top: 0px;
+    background-color: lightskyblue; 
+    border-radius: 15px;
 }
 
 .recipes-list {
@@ -260,20 +268,22 @@ body {
 
 .recipe {
     border: 1px solid #ddd;
-    margin-bottom: 20px;
+    
     padding: 20px;
-    background-color: #ffffff;
+    background-color: mintcream;
     display: flex;
     justify-content: space-between; /* Alignment of child elements(horizontal)*/
     align-items: center;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
-    border-radius: 5px;
+    border-radius: 15px;
+  
 
 }
 .recipe-text {
-    /* the text takes up the available space, pushing the image to the right */
+  
     flex-grow: 1;
+   
 }
 
 .recipe:hover {
@@ -281,7 +291,7 @@ body {
 }
 
 .recipe img {
-    border-radius: 5px; /*corner*/
+    border-radius: 15px;
     width: auto;
     height: 150px;
     object-fit: cover;
@@ -289,7 +299,7 @@ body {
 }
 
 .recipe-content {
-    max-width: calc(100% - 170px); /*parent container-170*/
+    max-width: calc(100% - 170px); 
 }
 
 .recipe h3 {
@@ -318,7 +328,7 @@ body {
         margin-bottom: 20px;
     }
     .recipe-content {
-        max-width: 100%; /* Use full card width for text on small screens */
+        max-width: 100%;
     }
 }
 

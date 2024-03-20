@@ -1,7 +1,14 @@
 <!DOCTYPE html>
 
 {% extends 'recipes/base.html' %}
+
+{% block heading %} 
+{{ recipe.title }}
+{% endblock %}
+
 {% block body_block %}
+
+
 
 <h1>{{ recipe.title }} - {{ recipe.author }}</h1>
 <div class="center">
@@ -25,3 +32,4 @@
 </div>
 
 {% endblock %}
+

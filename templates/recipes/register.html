@@ -37,13 +37,15 @@
                 </p>
             </div>
             
+           
             <div class="display_right">
                 <label class="login_register_label" for="id_picture">Profile photo:</label>
-                <input class="login_register_label" name="picture" type="file" accept="image/*" onchange="previewImage(event)">
+                <input class="login_register_label" id="id_picture" name="picture" type="file" accept="image/*" onchange="previewImage(event)">
                 <div id="imagePreview">
-                    <img src="{{ MEDIA_URL }}photo_placeholder.png" alt="Profile Photo" height="200" width="200" />
+                    <img id="placeholderPhoto" class="profile-photo" src="{{ MEDIA_URL }}photo_placeholder.png" alt="Profile Photo" height="200" width="200" />
                 </div>
             </div>
+            
 
             <button type="submit" class="submit">Submit</button>
             

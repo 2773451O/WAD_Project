@@ -11,10 +11,10 @@
       {% csrf_token %}
       <div class="form-group">
           <label class="login_register_label" for="id_bio">Bio:</label>
-          <textarea class="input" id="id_bio" name="bio">{{ user.userprofile.bio }}</textarea>
+          <textarea class="input" id="edit_profile" name="bio">{{ user.userprofile.bio }}</textarea>
 
           <label class="login_register_label" for="id_favourite_recipes">Favourite Recipes:</label>
-          <textarea class="input" id="id_favourite_recipes" name="favourite_recipes">{{ user.userprofile.favourite_recipes }}</textarea>
+          <textarea class="input" id="edit_profile" name="favourite_recipes">{{ user.userprofile.favourite_recipes }}</textarea>
       </div>
 
       <div class="display_right">
