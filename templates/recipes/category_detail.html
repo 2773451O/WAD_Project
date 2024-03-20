@@ -19,13 +19,18 @@
             {% for recipe in recipes %}
                 <div class="recipe">
                     <div class="recipe-text">
-                        <h3><a href="{% url 'recipes:recipe_page' recipe.slug %}">{{ recipe.title }}</a></h3>
+                        <h3><a href="{% url 'recipes:recipe' recipe.id %}">{{ recipe.title }}</a></h3>
 
                         <div class="recipe-content">
                             <p>{{ recipe.description }}</p>
                         </div>
                     </div>
-                    <img src="{{ recipe.image.url }}" alt="{{ recipe.title }}" class="recipe-image">
+                    {% if recipe.image %}
+                        <img src="{{ recipe.image.url }}" alt="{{ recipe.title }}" class="recipe-image">
+                    {% else %}
+                       
+                        <img src="{{ MEDIA_URL }}photo_placeholder.png" alt="Placeholder Image" class="recipe-image">
+                    {% endif %}
                 </div>
             {% endfor %}
         </div>

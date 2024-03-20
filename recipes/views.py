@@ -27,7 +27,7 @@ def user_login(request):
     context_dict['Page'] = 'Log in'
 
     if request.method == 'POST':
-        username = None  # Initialize username variable
+        username = None  
 
         username_or_email = request.POST.get('username')
         password = request.POST.get('password')
@@ -165,7 +165,7 @@ def search(request):
             return render(request, 'recipes/search.html', context={'recipe_results': recipe_results, 'query': query})
         else:
             form = SearchForm()
-        return render(request, 'recipes/search.html', context={'form': form})
+        return render(request, 'recipes/search.html', context={'form': form,'Page' : 'Search'})
     
 def recipe(request, recipeID):
     recipe = get_object_or_404(Recipe, id=recipeID)
