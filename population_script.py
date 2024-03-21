@@ -214,8 +214,7 @@ def clear():
 
 
 if __name__ == '__main__':
-    print("Clearing DB...")
-    clear()
+
     print('Running WAD population script...')
     populate()
     print('Done')
