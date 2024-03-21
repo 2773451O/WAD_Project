@@ -14,7 +14,8 @@
         <div class="home_images">
             <img src="{{ MEDIA_URL }}logo.png" id="logoImage" />
             {% for recipe in recipes %}
-                <img src="{{ recipe.image.url }}" class="recipe-picture" id="home_pictures"/>
+               
+                <a href="{% url 'recipes:recipe' recipe.id %}" title="{{ recipe.title }}"> <img src="{{ recipe.image.url }}" class="recipe-picture" id="home_pictures" /></a>
             {% endfor %}
         </div>
         <div>

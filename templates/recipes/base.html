@@ -5,7 +5,6 @@
 <html> 
     <head>
         <title> 
-            
             Culinary Carnival - {{Page}}
         </title>
 
@@ -13,7 +12,6 @@
         
         <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
         <script src="{% static 'script.js' %}"></script>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     </head> 
     
@@ -21,10 +19,12 @@
         <div class="navbar">
             <div class="logo">
                 <img src="{{ MEDIA_URL }}logo.png" alt="Culinary Carnival Logo"/>
+                
                 {% block heading %} 
           
                 {% endblock %}
                 {{ Page }}
+                
             </div>
             <div class="links">
                 {% if Page != 'Home' %}

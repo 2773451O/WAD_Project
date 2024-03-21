@@ -3,7 +3,7 @@
 {% extends 'recipes/base.html' %}
 
 {% block heading %} 
-Search: {{ query }}
+{{query}}
 {% endblock %}
 
 
@@ -14,7 +14,7 @@ Search: {{ query }}
 {% if recipe_results %}
     <ul class="search_results">
         {% for recipe in recipe_results %}
-            <div class =""><a href="{% url 'recipes:recipe' recipe.id %}"> {{ recipe.title }} - {{ recipe.author }}</a></div>
+            <a href="{% url 'recipes:recipe' recipe.id %}"> {{ recipe.title }} - {{ recipe.author }}</a>
         {% endfor %}
     </ul>
 {% else %}
