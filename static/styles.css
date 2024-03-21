@@ -267,10 +267,27 @@ body {
     font-family: 'Times New Roman', Times, serif;
 }
 
-textarea{
+textarea {
     font-family: 'Times New Roman', Times, serif;
     font-size: 16px;
 }
+
+.custom-select {
+    width: 35%;
+    padding: 12px 20px;
+    margin: 8px 20px;
+    border: 5px solid turquoise;
+    box-sizing: border-box;
+    display: block;
+    font-size: 16px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.custom-select option {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 16px;
+}
+
 
 /*Profile photo and buttons on register and edit profile page*/
 .display_right {

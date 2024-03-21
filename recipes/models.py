@@ -43,6 +43,7 @@ class Recipe(models.Model):
         return self.title
 
 class Review(models.Model):
+    id = models.BigAutoField(primary_key=True)
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
     title = models.CharField(max_length=256)
     rating = models.CharField(max_length=30)
@@ -55,6 +56,7 @@ class Review(models.Model):
         return self.title
     
 class UserProfile(models.Model):
+    id = models.BigAutoField(primary_key=True)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     picture = models.ImageField(default='profile_pic.png', upload_to='profile_images', blank=True)
     bio = models.TextField(blank=True)
