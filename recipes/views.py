@@ -195,9 +195,11 @@ def category_detail(request, category_slug):
 
 def recipe_page(request, recipe_slug):
     context_dict = {}
+    categories = Category.objects.all()
     recipe = get_object_or_404(Recipe, slug=recipe_slug)
     context_dict['Page']= recipe.title
     context_dict['recipe'] = recipe
+    context_dict['categories'] = categories
  
     return render(request, 'recipes/recipe_page.html', context=context_dict)
 
