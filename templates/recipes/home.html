@@ -15,7 +15,7 @@
             <img src="{{ MEDIA_URL }}logo.png" id="logoImage" />
             {% for recipe in recipes %}
                
-                <a href="{% url 'recipes:recipe' recipe.id %}" title="{{ recipe.title }}"> <img src="{{ recipe.image.url }}" class="recipe-picture" id="home_pictures" /></a>
+                <a href="{% url 'recipes:recipe_page' recipe.slug %}" title="{{ recipe.title }}"> <img src="{{ recipe.image.url }}" class="recipe-picture" id="home_pictures" /></a>
             {% endfor %}
         </div>
         <div>
