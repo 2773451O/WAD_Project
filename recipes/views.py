@@ -201,24 +201,18 @@ def recipe_page(request, recipe_slug):
 
 @login_required
 def upload_recipe(request):
-    upload_form = UploadForm()
+    categories = Category.objects.all()
     if request.method == 'POST':
-        upload_form = UploadForm(request.POST)
-        if upload_form.is_valid():
-            recipe = upload_form.save()
-            if 'image' in request.FILES:
-                recipe = Recipe.objects.get_or_create(title = recipe.title, ingredients = recipe.ingredients, difficulty=recipe.difficulty, categories=recipe.categories, author=recipe.author, description = recipe.description, likes=0, image=recipe.image)[0]
-            else:
-                recipe = Recipe.objects.get_or_create(title = recipe.title, ingredients = recipe.ingredients, difficulty=recipe.difficulty, categories=recipe.categories, author=recipe.author, description = recipe.description, likes=0)[0]
-
-            
+        form = UploadForm(request.POST, request.FILES)
+        if form.is_valid():
+            recipe = form.save(commit=False)
+            recipe.author = request.user  # Set the author to the currently logged-in user
             recipe.save()
-        
+            form.save_m2m()  # Save many-to-many relationships like categories
             return redirect(reverse('recipes:home'))
-
         else:
-            print(upload_form.errors)
+            print(form.errors)
+    else:
+        form = UploadForm()
 
-    context_dict = {'upload_form': upload_form,
-                             'Page' : 'Upload'}
-    return render(request, 'recipes/upload.html', context = context_dict)
+    return render(request, 'recipes/upload.html', {'upload_form': form, 'categories': categories})

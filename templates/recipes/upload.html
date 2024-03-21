@@ -9,14 +9,18 @@
         <h1>Upload a Recipe</h1>
         <div>
 
-            <form id="upload_form" method="post" action="{% url 'recipes:upload' %}" enctype="multipart/form-data">
+            <form id="upload_form" method="POST" action="" enctype="multipart/form-data">
                 {% csrf_token %}
                 <label>Title:</label>
                 <input type="text" name="title" class="input" placeholder="title" required autofocus>
                 <label >Description:</label>
                 <input type="text" name="description" class="input" placeholder="description" required>
                 <label>Categories:</label>
-                <input type="text" name="categories" class="input" placeholder="categories" required >
+                <select name="categories" multiple>
+                    {% for category in categories %}
+                        <option value="{{ category.id }}">{{ category.name }}</option>
+                    {% endfor %}
+                </select>
                 <label >Ingredients:</label>
                 <input type="text" name="ingredients" class="input" placeholder="ingredients" required>
                 <label>Difficulty:</label>
