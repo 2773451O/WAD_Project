@@ -5,7 +5,6 @@
 <html> 
     <head>
         <title> 
-            
             Culinary Carnival - {{Page}}
         </title>
 
@@ -13,23 +12,26 @@
         
         <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
         <script src="{% static 'script.js' %}"></script>
+
     </head> 
     
     <body>
         <div class="navbar">
             <div class="logo">
-                <img src="{{ MEDIA_URL }}logo.png" alt="Culinary Carnival Logo"/>
+                <a href="{% url 'recipes:home' %}"><img src="{{ MEDIA_URL }}logo.png" alt="Culinary Carnival Logo"/></a>
+                
                 {% block heading %} 
           
                 {% endblock %}
                 {{ Page }}
+                
             </div>
             <div class="links">
                 {% if Page != 'Home' %}
                     <a href="{% url 'recipes:home' %}">Home</a>
                 {% endif %}
                 {% if user.is_authenticated %} 
-                    <a href="{% url 'recipes:edit_profile' %}">Edit Profile</a>
+                    <a href="{% url 'recipes:view_profile' %}">Profile</a>
                     <a href="{% url 'recipes:logout' %}">Logout</a>
                     <a href="{% url 'recipes:upload' %}">Upload Recipe</a>
                     <div class = profile_photo>
@@ -66,6 +68,8 @@
           
             {% endblock %}
         </div>
+        <script src="{% static "js/jquery.com/jquery-3.3.1.min.js" %}" crossorigin="anonymous"></script>
+        <script src="{% static "js/recipes-jquery.js" %}" crossorigin="anonymous"></script>
 
     </body>  
 </html>

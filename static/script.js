@@ -14,25 +14,29 @@ function previewImage(event) {
     };
 
     reader.readAsDataURL(input.files[0]);
-    
     placeholderPhoto.style.display = 'none';
     
 }
-var images = ['carrots.png', 'chickencurry.png', 'pasta.png', 'carbonara.png','lasanga.png'];
 
-var index = 0; 
-var timer; 
+document.addEventListener("DOMContentLoaded", function() {
 
-function changeImageHomepage() {
-    var image = document.getElementById('home_pictures');
-    image.src = '/media/'+images[index]; 
-    index = (index + 1) % images.length; 
-}
+    const logoImage = document.getElementById('logoImage');
+    const profilePictures = document.querySelectorAll('.recipe-picture');
 
-timer = setInterval(changeImageHomepage, 5000);
+    setTimeout(function() {
+        logoImage.style.display = 'none'; 
+        startSlideshow();
+    }, 5000);
 
-// Not used but useful to have set up
-function stop() {
-    clearInterval(timer);
-}
+    function startSlideshow() {
+        let currentIndex = 0;
+        profilePictures[currentIndex].style.display = 'block';
 
+        function showNextPicture() {
+            profilePictures[currentIndex].style.display = 'none';
+            currentIndex = (currentIndex + 1) % profilePictures.length;
+            profilePictures[currentIndex].style.display = 'block';
+        }
+        setInterval(showNextPicture, 5000);
+    }
+});

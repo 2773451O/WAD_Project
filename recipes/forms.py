@@ -27,9 +27,9 @@ class UploadForm(forms.ModelForm):
     #description = forms.CharField(widget=forms.Textarea(attrs={'rows':3}))
     #directions = forms.CharField(widget=forms.Textarea(attrs={'rows':3}))
 
-    #likes = forms.IntegerField(widget=forms.HiddenInput(), initial=0)
+   # likes = forms.IntegerField(widget=forms.HiddenInput(), initial=0)
     image = forms.FileField(required = False)
-    #views = forms.IntegerField(widget=forms.HiddenInput(), initial=0)
+   # views = forms.IntegerField(widget=forms.HiddenInput(), initial=0)
     #user = User(initial=0)
     class Meta:
         model = Recipe
