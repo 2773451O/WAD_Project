@@ -19,7 +19,7 @@
             {% for recipe in recipes %}
                 <div class="recipe">
                     <div class="recipe-text">
-                        <h3><a href="{% url 'recipes:recipe' recipe.id %}">{{ recipe.title }}</a></h3>
+                        <a href="{% url 'recipes:recipe' recipe.id %}">{{ recipe.title }}</a>
 
                         <div class="recipe-content">
                             <p>{{ recipe.description }}</p>
@@ -29,7 +29,7 @@
                         <img src="{{ recipe.image.url }}" alt="{{ recipe.title }}" class="recipe-image">
                     {% else %}
                        
-                        <img src="{{ MEDIA_URL }}photo_placeholder.png" alt="Placeholder Image" class="recipe-image">
+                        <img src="{{ MEDIA_URL }}profile_pic.png" alt="Placeholder Image" class="recipe-image">
                     {% endif %}
                 </div>
             {% endfor %}

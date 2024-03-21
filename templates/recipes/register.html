@@ -42,13 +42,16 @@
                 <label class="login_register_label" for="id_picture">Profile photo:</label>
                 <input class="login_register_label" id="id_picture" name="picture" type="file" accept="image/*" onchange="previewImage(event)">
                 <div id="imagePreview">
-                    <img id="placeholderPhoto" class="profile-photo" src="{{ MEDIA_URL }}photo_placeholder.png" alt="Profile Photo" height="200" width="200" />
+                    <img id="placeholderPhoto" class="profile-photo" src="{{ MEDIA_URL }}profile_pic.png" alt="Profile Photo" height="200" width="200" />
                 </div>
+
+                <p id="error">{{error}}</p>
             </div>
-            
 
             <button type="submit" class="submit">Submit</button>
             
         </form>
     </div>
+
+
 {% endblock %}

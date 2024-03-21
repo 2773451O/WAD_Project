@@ -10,14 +10,14 @@ Search: {{ query }}
 {% load static %}
 
 {% block body_block %} 
-<h1>Search Results for "{{ query }}" </h1>
+<div id="heading">Search Results for "{{ query }}"</div>
 {% if recipe_results %}
-    <ul>
+    <ul class="search_results">
         {% for recipe in recipe_results %}
-            <li><a href="{% url 'recipes:recipe' recipe.id %}"> {{ recipe.title }} - {{ recipe.author }}</a></li>
+            <div class =""><a href="{% url 'recipes:recipe' recipe.id %}"> {{ recipe.title }} - {{ recipe.author }}</a></div>
         {% endfor %}
     </ul>
 {% else %}
-    <p>No results found.</p>
+    <p class ="message">No results found.</p>
 {% endif %}
 {% endblock %}

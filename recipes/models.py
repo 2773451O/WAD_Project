@@ -5,7 +5,7 @@ from django.template.defaultfilters import slugify
 class UserProfile(models.Model):
     
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    picture = models.ImageField(default = 'photo_placeholder.png',upload_to='profile_images', blank=True)
+    picture = models.ImageField(default = 'profile_pic.png',upload_to='profile_images', blank=True)
     bio = models.TextField(blank=True)
     favourite_recipes = models.TextField(blank=True) 
 

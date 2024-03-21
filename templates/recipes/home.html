@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 {% extends 'recipes/base.html' %}
 {% load static %}
 
@@ -13,15 +12,19 @@
     </div>
     <div class="home_content">
         <div class="home_images">
-            <img src="{{ MEDIA_URL }}lasanga.png" id = 'home_pictures' />
+            <img src="{{ MEDIA_URL }}logo.png" id="logoImage" />
+            {% for recipe in recipes %}
+                <img src="{{ recipe.image.url }}" class="recipe-picture" id="home_pictures"/>
+            {% endfor %}
         </div>
         <div>
             <div id="heading">
                 Welcome to Culinary Carnival!
             </div>
-            <p class="welcome_message">
+            <p class="message">
                 This is a friendly website for cooks of any experience to find an share recipes.<br>
                 Please browse our various categories or take a look at the most popular recipes on offer.<br>
+                We have categories to help you find a recipe suited to your ability.<br> 
                 If you have a recipe to share we'd all love to hear it you can upload it from the profile section if you have logged in.<br>
                 We hope you enjoy ur stay!
             </p>
