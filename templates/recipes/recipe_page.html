@@ -13,33 +13,47 @@
         </ul>
     </div>
  
-    <div class="recipe-content">
-        <div class="recipe-meta">
-            <h1>{{recipe.title}}</h1>
-            <p>Cooking Time: {{ recipe.cooking_time }}</p>
-            <p>Prep Time: {{ recipe.prep_time }}</p>
-            <p>Likes: {{ recipe.likes }}</p>
-            <p>Views: {{ recipe.views }}</p>
+    <div class="recipe-detail-content">
+        <div class="recipe-header">
+            <h1>{{ recipe.title }}</h1>
+            <!-- Recipe Meta and Description -->
+            <div class="recipe-meta-description">  
+                <p>Cooking Time: {{ recipe.cooking_time }}</p>
+                <p>Prep Time: {{ recipe.prep_time }}</p>
+                <p>Difficulty: {{recipe.difficulty}}</p>
+                <p>Likes: {{ recipe.likes }}</p>
+                <p>Views: {{ recipe.views }}</p>      
+               
+            </div>
         </div>
        
         <!--image-->
-        <div class="recipe-image">
-            <img src="{{ recipe.image.url }}" alt="{{ recipe.title }}">
+        <div class="recipe-main">
+            <div class="recipe-image">
+                <img src="{{ recipe.image.url }}" alt="{{ recipe.title }}">
+            </div>
+ 
+            <!-- Recipe Steps and Ingredients to the left, Image to the right -->
+            <div class="recipe-steps-ingredients">
+                <div class="recipe-steps">
+                    <h2>Steps</h2>
+                    <!-- Add steps -->
+                    <div>{{recipe.steps}}</div>
+                </div>
+                <div class="recipe-ingredients">
+                    <h2>Ingredients</h2>
+                    <!-- Add ingredients -->
+                    <div>{{recipe.ingredients}}</div>
+                </div>
+            </div>
         </div>
+ 
        
- 
-        <!--steps-->
-        <div class="recipe-steps">
-            <h2>Steps</h2>
- 
+        <div class="recipe-actions">
+            <a herf="" class="review-button">View Reviews/Comments</a>
+            <a href="" class="comment-button">Leave a Review</a>
         </div>
- 
-        <div class="recipe-ingredients">
-            <h2>ingredients</h2>
- 
-        </div>
- 
-        <button class="review-button">View Reviews/Comments</button>
-        <button class="comment-button">Leave a Review</button>
+    </div>
+</div>
  
 {% endblock %}

@@ -20,7 +20,7 @@
                 <div class="recipe">
                     <div class="recipe-text">
                         <!--<h3><a href="{% url 'recipes:recipe' recipe.id %}">{{ recipe.title }}</a></h3>-->
-                        <h3><a href="{% url 'recipes:goto' %}?recipe_id={{ recipe.id }}">{{ recipe.title }}</a></h3>
+                        <h3><a href="{% url 'recipes:recipe_page' recipe.slug %}?recipe_id={{ recipe.id }}">{{ recipe.title }}</a></h3>
 
                         {% if recipe.views > 1 %}
                         ({{ recipe.views }} views)
