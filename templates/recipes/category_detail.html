@@ -19,8 +19,14 @@
             {% for recipe in recipes %}
                 <div class="category_recipes">
                     <div class="recipe-text">
-                        <a href="{% url 'recipes:recipe' recipe.id %}">{{ recipe.title }}</a>
+                        <!--<h3><a href="{% url 'recipes:recipe' recipe.id %}">{{ recipe.title }}</a></h3>-->
+                        <h3><a href="{% url 'recipes:recipe_page' recipe.slug %}?recipe_id={{ recipe.id }}">{{ recipe.title }}</a></h3>
 
+                        {% if recipe.views > 1 %}
+                        ({{ recipe.views }} views)
+                        {% elif recipe.views == 1 %}
+                        ({{ recipe.views }} view)
+                        {% endif %}
                         <div class="recipe-content">
                             <p>{{ recipe.description }}</p>
                         </div>

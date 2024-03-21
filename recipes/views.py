@@ -11,6 +11,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import PasswordResetForm
 from recipes.models import UserProfile, Recipe, Category
 from django.db.models import Q
+from django.views import View
+from django.utils.decorators import method_decorator
 
 
 
@@ -205,32 +207,65 @@ def category_detail(request, category_slug):
 
 def recipe_page(request, recipe_slug):
     context_dict = {}
+    categories = Category.objects.all()
     recipe = get_object_or_404(Recipe, slug=recipe_slug)
     context_dict['Page']= recipe.title
     context_dict['recipe'] = recipe
+    context_dict['categories'] = categories
  
     return render(request, 'recipes/recipe_page.html', context=context_dict)
 
 @login_required
 def upload_recipe(request):
-    upload_form = UploadForm()
+    categories = Category.objects.all()
     if request.method == 'POST':
-        upload_form = UploadForm(request.POST)
-        if upload_form.is_valid():
-            recipe = upload_form.save()
-            if 'image' in request.FILES:
-                recipe = Recipe.objects.get_or_create(title = recipe.title, ingredients = recipe.ingredients, difficulty=recipe.difficulty, categories=recipe.categories, author=recipe.author, description = recipe.description, likes=0, image=recipe.image)[0]
-            else:
-                recipe = Recipe.objects.get_or_create(title = recipe.title, ingredients = recipe.ingredients, difficulty=recipe.difficulty, categories=recipe.categories, author=recipe.author, description = recipe.description, likes=0)[0]
-
-            
+        form = UploadForm(request.POST, request.FILES)
+        if form.is_valid():
+            recipe = form.save(commit=False)
+            recipe.author = request.user  # Set the author to the currently logged-in user
             recipe.save()
-        
+            form.save_m2m()  # Save many-to-many relationships like categories
             return redirect(reverse('recipes:home'))
-
         else:
-            print(upload_form.errors)
+            print(form.errors)
+    else:
+        form = UploadForm()
 
-    context_dict = {'upload_form': upload_form,
-                             'Page' : 'Upload'}
-    return render(request, 'recipes/upload.html', context = context_dict)
+    return render(request, 'recipes/upload.html', {'upload_form': form, 'categories': categories})
+
+def goto_url(request):
+    if request.method == 'GET':
+        recipe_id = request.GET.get('recipe_id')
+        try:
+            selected_page = Recipe.objects.get(id=recipe_id)
+        except Recipe.DoesNotExist:
+            return redirect(reverse('recipes:home'))
+        selected_page.views = selected_page.views + 1
+        selected_page.save()
+        return redirect('recipes:recipe', recipeID=recipe_id)
+    return redirect(reverse('recipes:home'))
+
+class LikeRecipeView(View):
+    @method_decorator(login_required)
+    def get(self, request):
+        recipe_id = request.GET['recipe_id']
+        try:
+            recipe = Recipe.objects.get(id=int(recipe_id))
+            print (recipe)
+        except Recipe.DoesNotExist:
+            print("doesnt exist")
+            return HttpResponse(-1)
+        except ValueError:
+            return HttpResponse(-1)
+        recipe.likes = recipe.likes + 1
+        recipe.save()
+        return HttpResponse(recipe.likes)
+    
+def view_profile(request):
+    user_profile = get_object_or_404(UserProfile, user=request.user)
+
+    context = {
+        'user_profile': user_profile,
+        'Page': 'View Profile',
+    }
+    return render(request, 'recipes/view_profile.html', context)

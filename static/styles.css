@@ -437,6 +437,29 @@ textarea{
     .recipe-content {
         max-width: 100%;
     }
+    /*recipe page*/
+    .recipe-container {
+        flex-direction: column;
+    }
+ 
+    .recipe-detail-content {
+        flex-direction: column-reverse;
+        padding: 10px;
+    }
+ 
+    .recipe-meta-description {
+        flex-direction: column;
+    }
+   
+    .recipe-steps-ingredients {
+        flex-direction: column;
+    }
+ 
+    .recipe-image{
+        width: 100%;
+        margin-bottom: 20px;
+    }
+ 
 }
 
 @media screen and (max-width: 400px) {
@@ -444,4 +467,95 @@ textarea{
       text-align: center;
       float: none;
     }
+}
+
+/*recipe page design */
+.recipe-container {
+    display: flex;
+    margin: auto;
+    background-color: #fff;
+}
+ 
+.recipe-detail-content {
+    display: flex;
+    flex-direction: column;
+    max-width: 800px;
+    margin: auto;
+    flex-grow: 1; /* Take up remaining space */
+    padding: 20px;
+   
+}
+ 
+/*meta and description */
+.recipe-meta-description {
+    display: flex;
+    margin-bottom: 15px;
+}
+ 
+ 
+.recipe-main{
+    display: flex;
+    margin-top: 20px;
+}
+ 
+.recipe-image {
+    align-self: flex-end; /* Align image to the right */
+    max-width: 300px;
+}
+ 
+.recipe-image img {
+    max-width: 100%;
+    height: auto;
+}
+ 
+/* Recipe steps and ingredients */
+.recipe-steps-ingredients {
+    flex-grow:1;
+    display: flex;
+    flex-direction: column;
+     
+}
+ 
+.recipe-steps,
+.recipe-ingredients {
+    margin: 10px;
+    background-color: #f9f9f9;
+    padding: 10x;
+    flex: 1;
+}
+ 
+.recipe-steps h2,
+.recipe-ingredients h2 {
+    margin-top: 0;
+    color: #333;
+}
+ 
+.recipe-ingredients ul {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+ 
+/* Buttons */
+ 
+.recipe-actions a {
+    display: inline-block;
+    padding: 10px 15px;
+    margin: 5px;
+    text-decoration: none;
+    color: white;
+    background-color: #333;
+    border-radius: 5px;
+    transition: background-color 0.3s; /
+}
+ 
+.recipe-actions a:hover {
+    background-color: #555;
+}
+ 
+.recipe-actions .comment-button {
+    background-color: #4CAF50;
+}
+ 
+.recipe-actions .comment-button:hover {
+    background-color: #45a049;
 }

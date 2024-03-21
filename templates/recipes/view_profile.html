@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+{% extends 'recipes/base.html' %}
+{% load static %}
+
+{% block body_block %}
+<div id="heading">
+    Your Profile
+</div>
+<div class="container">
+    <div class="profile-info">
+        <div class="view_bio">
+            <h3>Bio</h3>
+            <p>{{ user_profile.bio }}</p>
+        </div>
+        <h3>Favourite Recipes</h3>
+        <p>{{ user_profile.favourite_recipes }}</p>
+        <div class ="display_right">
+        <h3>Profile Photo</h3>
+            <div id="imagePreview">
+                {% if user_profile.picture %}
+                    <img class="profile-photo" src="{{ user_profile.picture.url }}" alt="Profile Photo" height="200" width="200" />
+                {% else %}
+                    <img class="profile-photo" src="{% static 'photo_placeholder.png' %}" alt="Profile Photo" height="200" width="200" />
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <a href="{% url 'recipes:edit_profile' %}">Edit Profile</a>
+</div>
+
+{% endblock %}
