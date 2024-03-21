@@ -246,3 +246,12 @@ class LikeRecipeView(View):
         recipe.likes = recipe.likes + 1
         recipe.save()
         return HttpResponse(recipe.likes)
+    
+def view_profile(request):
+    user_profile = get_object_or_404(UserProfile, user=request.user)
+
+    context = {
+        'user_profile': user_profile,
+        'Page': 'View Profile',
+    }
+    return render(request, 'recipes/view_profile.html', context)
