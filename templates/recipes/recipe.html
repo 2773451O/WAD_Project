@@ -13,7 +13,17 @@
 <h1>{{ recipe.title }} - {{ recipe.author }}</h1>
 <div class="center">
 
-    <h3><b>Views:</b> {{ recipe.views }}   <b>Likes:</b> {{ recipe.likes }}</h3>
+    <h3><b>Views:</b> {{ recipe.views }}</h3>
+    <div>
+        <strong id="like_count">{{ recipe.likes }}</strong> likes
+
+        {% if user.is_authenticated %}
+        <button id="like_btn" data-recipeid="{{ recipe.id }}" class="btn btn-primary btn-sm" type="button">
+            <span data-feathers="thumbs-up"></span>
+            Like recipe
+        </button>
+        {% endif %}
+    </div>
 
     <p><b>Category:</b> {{ recipe.category }} </p>
 
@@ -30,6 +40,8 @@
     <li>{{ step }}</li>
     {%endfor%}
 </div>
+
+
 
 {% endblock %}
 

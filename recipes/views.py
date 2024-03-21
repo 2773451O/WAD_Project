@@ -11,6 +11,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import PasswordResetForm
 from recipes.models import UserProfile, Recipe, Category
 from django.db.models import Q
+from django.views import View
+from django.utils.decorators import method_decorator
 
 
 
@@ -216,3 +218,31 @@ def upload_recipe(request):
         form = UploadForm()
 
     return render(request, 'recipes/upload.html', {'upload_form': form, 'categories': categories})
+
+def goto_url(request):
+    if request.method == 'GET':
+        recipe_id = request.GET.get('recipe_id')
+        try:
+            selected_page = Recipe.objects.get(id=recipe_id)
+        except Recipe.DoesNotExist:
+            return redirect(reverse('recipes:home'))
+        selected_page.views = selected_page.views + 1
+        selected_page.save()
+        return redirect('recipes:recipe', recipeID=recipe_id)
+    return redirect(reverse('recipes:home'))
+
+class LikeRecipeView(View):
+    @method_decorator(login_required)
+    def get(self, request):
+        recipe_id = request.GET['recipe_id']
+        try:
+            recipe = Recipe.objects.get(id=int(recipe_id))
+            print (recipe)
+        except Recipe.DoesNotExist:
+            print("doesnt exist")
+            return HttpResponse(-1)
+        except ValueError:
+            return HttpResponse(-1)
+        recipe.likes = recipe.likes + 1
+        recipe.save()
+        return HttpResponse(recipe.likes)
