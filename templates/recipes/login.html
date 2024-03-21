@@ -20,9 +20,8 @@
 <div class="display_right">
     <a href="{% url 'recipes:register' %}">Register</a>
     <a href="{% url 'recipes:password_reset_form' %}">Forgot Password</a>
+    <p id="error">{{error}}</p>
 </div>
-
-<!-- Add the popup modal -->
 
 
 {% endblock %}

@@ -8,14 +8,15 @@ from recipes.models import Recipe, Category, User
 def populate():
     recipes_data = [
         {
-            'title': 'Spaghetti Bolognese',
-            'category_name': 'Italian',
-            'ingredients': 'Spaghetti\nMince meat\nTomatoes',
-            'difficulty': 'Easy',
-            'username': 'hannah',
-            'directions': 'First, boil the pasta\nSecond, fry off some chopped onions\nThird, add the meat and cook through',
-            'views': 100,
-            'likes': 37
+            'title': 'sausage rolls',
+            'category_name': 'Pastys',
+            'ingredients': 'Pastry\nHopefully pig',
+            'difficulty': 'Hard',
+            'username': 'Chico Bear',
+            'directions': 'Put in microware till lukewarm',
+            'image': 'logo.png',
+            'views': 100334324343244343,
+            'likes': 334384384903847
         },
     ]
 

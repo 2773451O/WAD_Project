@@ -5,7 +5,6 @@
 <html> 
     <head>
         <title> 
-            
             Culinary Carnival - {{Page}}
         </title>
 
@@ -13,16 +12,19 @@
         
         <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
         <script src="{% static 'script.js' %}"></script>
+
     </head> 
     
     <body>
         <div class="navbar">
             <div class="logo">
-                <img src="{{ MEDIA_URL }}logo.png" alt="Culinary Carnival Logo"/>
+                <a href="{% url 'recipes:home' %}"><img src="{{ MEDIA_URL }}logo.png" alt="Culinary Carnival Logo"/></a>
+                
                 {% block heading %} 
           
                 {% endblock %}
                 {{ Page }}
+                
             </div>
             <div class="links">
                 {% if Page != 'Home' %}

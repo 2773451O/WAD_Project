@@ -18,11 +18,12 @@ from django.utils.decorators import method_decorator
 
 
 def home(request):
-    
-    categories = Category.objects.all()  # Query all categories from the database
-    context_dict = {'Page': 'Home', 'categories': categories}
+    recipe = Recipe.objects.all()
+    categories = Category.objects.all()  
+    context_dict = {'Page': 'Home', 'categories': categories, 'recipes': recipe}
     response = render(request, 'recipes/home.html', context=context_dict)
     return response
+
     
 def user_login(request):
     context_dict = {}
@@ -50,9 +51,11 @@ def user_login(request):
                 login(request, user)
                 return redirect(reverse('recipes:home'))
             else:
-                return HttpResponse("Your Culinary Carnival account is disabled.")
+               context_dict['error'] = 'Your culinary carnival account is disabled'
+            return render(request, 'recipes/login.html', context=context_dict)
         else:
-            return HttpResponse("Invalid login details supplied.")
+            context_dict['error'] = 'Invalid login details supplied'
+            return render(request, 'recipes/login.html', context=context_dict)
     else:
         return render(request, 'recipes/login.html', context=context_dict)
  
@@ -63,17 +66,23 @@ def upload_review(request):
     return render(request, 'recipes/upload.html', context=context_dict)
 
 def register(request):
-
     registered = False
-    
-    if request.method == 'POST':
 
+    if request.method == 'POST':
         user_form = UserForm(request.POST)
         profile_form = UserProfileForm(request.POST)
        
-        if user_form.is_valid() and profile_form.is_valid(): 
-            user = user_form.save()
+        if user_form.is_valid() and profile_form.is_valid():
+            email = user_form.cleaned_data['email']
+            if User.objects.filter(email=email).exists():
+                return render(request, 'recipes/register.html',
+                              context={'user_form': user_form,
+                                       'profile_form': profile_form,
+                                       'registered': registered,
+                                       'Page': 'Register',
+                                       'error': "Email already exists. Please use a different email."})
 
+            user = user_form.save()
             user.set_password(user.password)
             user.save()
             
@@ -83,7 +92,6 @@ def register(request):
             if 'picture' in request.FILES:
                 profile.picture = request.FILES['picture']
                 
-                     
             profile.save()
 
             user = authenticate(username=user_form.cleaned_data['username'],
@@ -93,17 +101,21 @@ def register(request):
             return redirect('recipes:home')
 
         else:
-                return HttpResponse("Username or Email already exists please choose another.")
+            return render(request, 'recipes/register.html',
+                          context={'user_form': user_form,
+                                   'profile_form': profile_form,
+                                   'registered': registered,
+                                   'Page': 'Register',
+                                   'error': "Invalid details, please try again"})
     else:
-
         user_form = UserForm()
         profile_form = UserProfileForm()
     
     return render(request, 'recipes/register.html',
-                  context = {'user_form': user_form,
-                             'profile_form': profile_form,
-                             'registered': registered,
-                             'Page' : 'Register'})
+                  context={'user_form': user_form,
+                           'profile_form': profile_form,
+                           'registered': registered,
+                           'Page': 'Register'})
 
 @login_required
 def user_logout(request):
