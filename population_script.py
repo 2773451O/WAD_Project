@@ -8,12 +8,13 @@ from recipes.models import Recipe, Category, User
 def populate():
     recipes_data = [
         {
-            'title': 'Greggs sausage rolls',
+            'title': 'sausage rolls',
             'category_name': 'Pastys',
             'ingredients': 'Pastry\nHopefully pig',
             'difficulty': 'Hard',
             'username': 'Chico Bear',
             'directions': 'Put in microware till lukewarm',
+            'image': 'logo.png',
             'views': 100334324343244343,
             'likes': 334384384903847
         },
