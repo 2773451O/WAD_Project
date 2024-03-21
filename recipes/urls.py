@@ -19,4 +19,5 @@ urlpatterns = [
     path('category/<slug:category_slug>/', views.category_detail, name='category_detail'),
     path('like_recipe/', views.LikeRecipeView.as_view(), name='like_recipe'),
     path('goto/', views.goto_url, name='goto'),
+    path('profile/', views.view_profile, name='view_profile'),
 ]
