@@ -157,7 +157,6 @@ def search(request):
                 Q(title__icontains=query) |
                 Q(ingredients__icontains=query) |
                 Q(directions__icontains=query) |
-                Q(difficulty__icontains=query) |
                 Q(categories__name__icontains=query) |
                 Q(author__username__icontains=query)
                 

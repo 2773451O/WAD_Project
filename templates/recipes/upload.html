@@ -1,5 +1,5 @@
 {% extends 'recipes/base.html' %}
-{% load staticfiles %}
+{% load static %}
 
 {% block title_block %}
     Upload Recipe
@@ -13,20 +13,30 @@
                 {% csrf_token %}
                 <label>Title:</label>
                 <input type="text" name="title" class="input" placeholder="title" required autofocus>
-                <label >Description:</label>
-                <input type="text" name="description" class="input" placeholder="description" required>
-                <label>Categories:</label>
+                
+                <label>Category:</label>
+                <br>
                 <select name="categories" multiple>
                     {% for category in categories %}
                         <option value="{{ category.id }}">{{ category.name }}</option>
                     {% endfor %}
                 </select>
-                <label >Ingredients:</label>
-                <input type="text" name="ingredients" class="input" placeholder="ingredients" required>
-                <label>Difficulty:</label>
-                <input type="text" name="difficulty" class="input" placeholder="difficulty" required >
-                <label >Directions:</label>
-                <input type="text" name="directions" class="input" placeholder="directions" required>
+                <br>
+                <br>
+                
+                <label >Preparation Time:</label>
+                <input type="text" name="description" class="input" placeholder="preparation time" required>
+               
+                <label >Cooking Time:</label>
+                <input type="text" name="description" class="input" placeholder="cooking time" required>
+                
+                <label >Ingredients: [separate by new line]</label>
+                <textarea type="text" name="ingredients" class="input" placeholder="ingredients" required></textarea>
+                
+                
+                <label >Directions: [number each step and separate by new line]</label>
+                <textarea type="text" name="directions" class="input" placeholder="directions" required></textarea>
+                
                 <label>Image:</label>
                 <input type="file" name="image" class="input" placeholder="image">
              

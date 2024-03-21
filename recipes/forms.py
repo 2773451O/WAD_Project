@@ -33,7 +33,7 @@ class UploadForm(forms.ModelForm):
     #user = User(initial=0)
     class Meta:
         model = Recipe
-        fields = ('title','ingredients','description','directions', 'image', 'categories','difficulty','author')
+        fields = ('title','ingredients','description','directions', 'image', 'categories','author')
         exclude = ('likes', 'views', 'author')
 
 

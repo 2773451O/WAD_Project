@@ -36,7 +36,6 @@ class Recipe(models.Model):
     description = models.TextField()
     categories = models.ManyToManyField(Category)
     ingredients = models.TextField()
-    difficulty = models.TextField()
     author = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     directions = models.TextField()
     image = models.ImageField(upload_to='recipes/', blank=True)
@@ -58,8 +57,10 @@ class Review(models.Model):
     title = models.CharField(max_length = 256)
     rating = models.CharField(max_length=30)
     description = models.CharField(max_length = 2000, default = 'write your review here...')
+    
     class Meta:
         verbose_name_plural = 'Reviews'
+    
     def __str__(self):
         return self.name
     
