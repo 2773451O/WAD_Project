@@ -5,7 +5,7 @@ from django.urls import reverse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from datetime import datetime
-from recipes.forms import UserForm, UserProfileForm, SearchForm
+from recipes.forms import UserForm, UserProfileForm, SearchForm, UploadForm
 from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import PasswordResetForm
@@ -210,3 +210,27 @@ def recipe_page(request, recipe_slug):
     context_dict['recipe'] = recipe
  
     return render(request, 'recipes/recipe_page.html', context=context_dict)
+
+@login_required
+def upload_recipe(request):
+    upload_form = UploadForm()
+    if request.method == 'POST':
+        upload_form = UploadForm(request.POST)
+        if upload_form.is_valid():
+            recipe = upload_form.save()
+            if 'image' in request.FILES:
+                recipe = Recipe.objects.get_or_create(title = recipe.title, ingredients = recipe.ingredients, difficulty=recipe.difficulty, categories=recipe.categories, author=recipe.author, description = recipe.description, likes=0, image=recipe.image)[0]
+            else:
+                recipe = Recipe.objects.get_or_create(title = recipe.title, ingredients = recipe.ingredients, difficulty=recipe.difficulty, categories=recipe.categories, author=recipe.author, description = recipe.description, likes=0)[0]
+
+            
+            recipe.save()
+        
+            return redirect(reverse('recipes:home'))
+
+        else:
+            print(upload_form.errors)
+
+    context_dict = {'upload_form': upload_form,
+                             'Page' : 'Upload'}
+    return render(request, 'recipes/upload.html', context = context_dict)

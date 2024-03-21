@@ -1,6 +1,5 @@
 from django.contrib import admin
-from recipes.models import UserProfile
-from recipes.models import Category, Recipe
+from recipes.models import UserProfile, Category, Recipe
 
 # Register your models here.
 class CategoryAdmin(admin.ModelAdmin):

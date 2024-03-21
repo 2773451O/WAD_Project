@@ -51,5 +51,17 @@ class Recipe(models.Model):
 
     def __str__(self):
         return self.title
+
+class Review(models.Model):
+    reviewId = models.IntegerField(primary_key=True)
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
+    title = models.CharField(max_length = 256)
+    rating = models.CharField(max_length=30)
+    description = models.CharField(max_length = 2000, default = 'write your review here...')
+    class Meta:
+        verbose_name_plural = 'Reviews'
+    def __str__(self):
+        return self.name
     
+
 
