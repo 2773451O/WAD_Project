@@ -31,6 +31,8 @@ class Recipe(models.Model):
     directions = models.TextField()
     image = models.ImageField(upload_to='recipes/', blank=True)
     slug = models.SlugField(unique=True)
+    cooking_time = models.IntegerField(null=True)
+    prep_time = models.IntegerField(null=True)
 
     views = models.IntegerField(default=0)
     likes = models.IntegerField(default=0)

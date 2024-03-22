@@ -26,7 +26,7 @@ class UploadForm(forms.ModelForm):
     image = forms.FileField(required = False)
     class Meta:
         model = Recipe
-        fields = ('title','ingredients','description','directions', 'image', 'categories','author')
+        fields = ('title','ingredients','description','directions', 'image', 'categories','author', 'cooking_time', 'prep_time')
         exclude = ('likes', 'views', 'author', 'description')
 
 
