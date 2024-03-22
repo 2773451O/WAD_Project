@@ -20,6 +20,13 @@
             <div class="recipe-meta-description">  
                 <p>Cooking Time: {{ recipe.cooking_time }} mins <br>
                 Prep Time: {{ recipe.prep_time }} mins <br>
+                Difficulty: 
+                {% for category in recipe.categories.all %}
+                    {{ category.name }}
+                {% empty %}
+                    Not specified
+                {% endfor %} 
+                <br>
                 Likes: {{ recipe.likes }}
                 Views: {{ recipe.views }}</p>
                
