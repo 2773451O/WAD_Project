@@ -204,14 +204,9 @@ def populate():
         recipe = Recipe.objects.create(author=author, **recipe_data_copy)
         recipe.categories.set(categories)  
 
-def clear():
-    Recipe.objects.all().delete()
-    Category.objects.all().delete()
 
 
 if __name__ == '__main__':
-    print("Clearing DB...")
-    clear()
     print('Running WAD population script...')
     populate()
     print('Done')
