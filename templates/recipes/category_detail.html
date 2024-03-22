@@ -18,6 +18,7 @@
             {% for recipe in recipes %}
                 <div class="category_recipes">
                     <div class="recipe-text">
+                      
                         <h3><a href="{% url 'recipes:goto' recipe.slug %}">{{ recipe.title }}</a></h3>
 
                         {% if recipe.views > 1 %}
