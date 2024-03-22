@@ -6,30 +6,38 @@
 <div id="heading">
     Edit Profile
 </div>
-  <form method="POST" action="" enctype="multipart/form-data">
-      {% csrf_token %}
-      <div class="form-group">
-          <label class="login_register_label" for="id_bio">Bio:</label>
-          <textarea class="input" id="edit_profile" name="bio">{{ user.userprofile.bio }}</textarea>
+<form method="POST" action="" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-group">
+        <label class="login_register_label" for="id_bio">Edit your bio:</label>
+        <textarea class="input" id="edit_profile" name="bio">{{ user.userprofile.bio }}</textarea>
 
-          <label class="login_register_label" for="id_favourite_recipes">Favourite Recipes:</label>
-          <textarea class="input" id="edit_profile" name="favourite_recipes">{{ user.userprofile.favourite_recipes }}</textarea>
-      </div>
-
-      <div class="display_right">
-          <label class="login_register_label" for="id_picture">Change Profile Photo:</label>
-          <input type="file" class="login_register_label" id="id_picture" name="picture" accept="image/*" onchange="previewImage(event)">
-          <div id="imagePreview">
-              {% if user.userprofile.picture %}
-                  <img id="currentPhoto" class="profile-photo" src="{{ user.userprofile.picture.url }}" alt="Profile Photo" height="200" width="200" />
-              {% else %}
-                  <img id="placeholderPhoto" class="profile-photo" src="{% static 'photo_placeholder.png' %}" alt="Profile Photo" height="200" width="200" />
-              {% endif %}
+        <label class="login_register_label" for="id_favourite_recipes">Edit your favourite recipes:</label>
+        {% for recipe in user.userprofile.favourite_recipes.all %}
+          <div class="checkbox">
+              <label>
+                  <input type="checkbox" name="favourite_recipes" value="{{ recipe.id }}" checked>
+                  {{ recipe.title }}
+              </label>
           </div>
-      </div>
+        {% endfor %}
+    </div>
 
-      <button type="submit" class="submit">Save changes</button>
-  </form>
+    <div class="display_right">
+        <label class="login_register_label" for="id_picture">Change Profile Photo:</label>
+        <input type="file" class="login_register_label" id="id_picture" name="picture" accept="image/*" onchange="previewImage(event)">
+        <div id="imagePreview">
+            {% if user.userprofile.picture %}
+                <img id="currentPhoto" class="profile-photo" src="{{ user.userprofile.picture.url }}" alt="Profile Photo" height="200" width="200" />
+            {% else %}
+                <img id="placeholderPhoto" class="profile-photo" src="{% static 'photo_placeholder.png' %}" alt="Profile Photo" height="200" width="200" />
+            {% endif %}
+        </div>
+    </div>
+
+    <button type="submit" name="action" value="save_changes" class="submit">Save changes</button>
+</form>
+
 
 
 {% endblock %}

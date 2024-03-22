@@ -1,0 +1,22 @@
+{% extends 'recipes/base.html' %}
+
+{% block title_block %}Reviews for {{ recipe.title }}{% endblock %}
+
+{% block body_block %}
+<h1>Reviews for {{ recipe.title }}</h1>
+
+{% if reviews %}
+    <div class="reviews">
+        {% for review in reviews %}
+            <div class="review">
+                <h3>{{ review.title }}</h3>
+                <p>Rating: {{ review.rating }}</p>
+                <p>{{ review.description }}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <p>No reviews yet.</p>
+{% endif %}
+
+{% endblock %}

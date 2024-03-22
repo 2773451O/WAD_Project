@@ -14,7 +14,7 @@
 {% if recipe_results %}
     <ul class="search_results">
         {% for recipe in recipe_results %}
-            <a href="{% url 'recipes:recipe' recipe.id %}"> {{ recipe.title }} - {{ recipe.author }}</a>
+            <a href="{% url 'recipes:recipe_page' recipe.slug %}"> {{ recipe.title }} - {{ recipe.author }}</a>
         {% endfor %}
     </ul>
 {% else %}

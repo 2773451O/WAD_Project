@@ -14,13 +14,11 @@
     </div>
 
     <div class="category_content">
-        <!-- Content next to the sidebar -->
         <div class="recipes-list">
             {% for recipe in recipes %}
                 <div class="category_recipes">
                     <div class="recipe-text">
-                        <!--<h3><a href="{% url 'recipes:recipe' recipe.id %}">{{ recipe.title }}</a></h3>-->
-                        <h3><a href="{% url 'recipes:recipe_page' recipe.slug %}?recipe_id={{ recipe.id }}">{{ recipe.title }}</a></h3>
+                        <h3><a href="{% url 'recipes:goto' recipe.slug %}">{{ recipe.title }}</a></h3>
 
                         {% if recipe.views > 1 %}
                         ({{ recipe.views }} views)

@@ -5,11 +5,11 @@ from django.urls import reverse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from datetime import datetime
-from recipes.forms import UserForm, UserProfileForm, SearchForm, UploadForm
+from recipes.forms import ReviewForm, UserForm, UserProfileForm, SearchForm, UploadForm
 from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import PasswordResetForm
-from recipes.models import UserProfile, Recipe, Category
+from recipes.models import UserProfile, Recipe, Category, Review
 from django.db.models import Q
 from django.views import View
 from django.utils.decorators import method_decorator
@@ -59,11 +59,24 @@ def user_login(request):
     else:
         return render(request, 'recipes/login.html', context=context_dict)
  
-def upload_review(request):
+
+def upload_review(request, recipeID):
+    if request.method == 'POST':
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            review = form.save(commit=False)
+            review.author = request.user  
+            recipe_instance = get_object_or_404(Recipe, id=recipeID)
+            review.recipe = recipe_instance 
+            review.save()
+
+            return redirect('recipes:home')  
+        else:
+            print(form.errors)
+    else:
+        form = ReviewForm()
     
-    context_dict = {}
-    context_dict['Page'] = 'Upload Review'
-    return render(request, 'recipes/upload.html', context=context_dict)
+    return render(request, 'recipes/upload_review.html', {'form': form, 'recipeID': recipeID})
 
 def register(request):
     registered = False
@@ -146,21 +159,23 @@ def reset_password(request):
 
 @login_required
 def user_edit_profile(request):
-
     user_profile, created = UserProfile.objects.get_or_create(user=request.user)
 
     if request.method == 'POST':
         form = UserProfileForm(request.POST, request.FILES, instance=user_profile)
         if form.is_valid():
             form.save()
-            return redirect('/')
+            return redirect('recipes:view_profile')  
     else:
         form = UserProfileForm(instance=user_profile)
 
-    
-    context_dict = {'form' : form,
-                    'Page' : 'Edit Profile',}
+    context_dict = {
+        'form': form,
+        'Page': 'Edit Profile',
+    }
     return render(request, 'recipes/edit_profile.html', context_dict)
+
+
 
 def search(request):
     if request.method == 'GET':
@@ -180,11 +195,6 @@ def search(request):
             form = SearchForm()
         return render(request, 'recipes/search.html', context={'form': form,'Page' : 'Search'})
     
-def recipe(request, recipeID):
-    recipe = get_object_or_404(Recipe, id=recipeID)
-    steps = recipe.directions.split("\n")
-    ingredients = recipe.ingredients.split("\n")
-    return render(request, 'recipes/recipe.html', context={'recipe': recipe, 'steps': steps, 'ingredients': ingredients})
 
 def category_detail(request, category_slug):
     context_dict = {}
@@ -221,9 +231,9 @@ def upload_recipe(request):
         form = UploadForm(request.POST, request.FILES)
         if form.is_valid():
             recipe = form.save(commit=False)
-            recipe.author = request.user  # Set the author to the currently logged-in user
+            recipe.author = request.user  
             recipe.save()
-            form.save_m2m()  # Save many-to-many relationships like categories
+            form.save_m2m()  
             return redirect(reverse('recipes:home'))
         else:
             print(form.errors)
@@ -232,17 +242,11 @@ def upload_recipe(request):
 
     return render(request, 'recipes/upload.html', {'upload_form': form, 'categories': categories})
 
-def goto_url(request):
-    if request.method == 'GET':
-        recipe_id = request.GET.get('recipe_id')
-        try:
-            selected_page = Recipe.objects.get(id=recipe_id)
-        except Recipe.DoesNotExist:
-            return redirect(reverse('recipes:home'))
-        selected_page.views = selected_page.views + 1
-        selected_page.save()
-        return redirect('recipes:recipe', recipeID=recipe_id)
-    return redirect(reverse('recipes:home'))
+def goto_url(request, slug):
+    recipe = get_object_or_404(Recipe, slug=slug)
+    recipe.views += 1
+    recipe.save()
+    return redirect('recipes:recipe_page', recipe_slug=slug)
 
 class LikeRecipeView(View):
     @method_decorator(login_required)
@@ -268,3 +272,31 @@ def view_profile(request):
         'Page': 'View Profile',
     }
     return render(request, 'recipes/view_profile.html', context)
+
+@login_required
+def add_to_favourites(request, recipe_id):
+    recipe = get_object_or_404(Recipe, pk=recipe_id)
+    user_profile = UserProfile.objects.get_or_create(user=request.user)[0]  
+
+    user_profile.favourite_recipes.add(recipe)
+    user_profile.save()
+
+    return redirect('recipes:recipe_page', recipe_slug=recipe.slug)
+
+
+def recipe_reviews(request, recipe_id):
+    recipe = get_object_or_404(Recipe, id=recipe_id)
+    reviews = Review.objects.filter(recipe=recipe)
+    context = {'recipe': recipe, 'reviews': reviews}
+    return render(request, 'recipes/recipe_reviews.html', context)
+
+def most_viewed_recipes(request):
+    recipes = Recipe.objects.order_by('-views')[:5]  
+    context = {'recipes': recipes}
+    return render(request, 'recipes/most_viewed_recipes.html', context)
+
+def most_liked_recipes(request):
+    recipes = Recipe.objects.order_by('-likes')[:5]  
+    context = {'recipes': recipes}
+    return render(request, 'recipes/most_liked_recipes.html', context)
+
