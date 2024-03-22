@@ -1,0 +1,36 @@
+{% extends 'recipes/base.html' %}
+{% load static %}
+
+{% block title_block %}
+    Write a Review
+{% endblock %}
+{% block body_block %}
+    {% if user.is_authenticated %}
+        <h1>Write a Review</h1>
+        <div>
+            <form id="review_form" method="post" action="" enctype="multipart/form-data">
+                {% csrf_token %}
+                
+                <label>Title:</label>
+                <input type="text" name="title" class="input" placeholder="Title of your review" required autofocus>
+                
+                <label>Rating:</label>
+                <select name="rating" class="custom-select">
+                    <option value="">--Please choose a rating out of 5--</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                
+                <label>Description:</label>
+                <textarea name="description" class="input" placeholder="Describe your experience" required rows="3"></textarea>
+                
+                <input type="submit" name="submit" value="Submit Review" class="submit" />
+            </form>
+        {% else %}
+            <a href="{% url 'recipes:home' %}">Return to the homepage.</a><br />
+        {% endif %}
+        </div>
+{% endblock %}

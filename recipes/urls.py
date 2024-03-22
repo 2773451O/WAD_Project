@@ -17,6 +17,11 @@ urlpatterns = [
     path('recipe/<slug:recipe_slug>/', views.recipe_page, name='recipe_page'),
     path('category/<slug:category_slug>/', views.category_detail, name='category_detail'),
     path('like_recipe/', views.LikeRecipeView.as_view(), name='like_recipe'),
-    path('goto/', views.goto_url, name='goto'),
+    path('goto/<slug:slug>/', views.goto_url, name='goto'),
     path('profile/', views.view_profile, name='view_profile'),
+    path('upload_review/<int:recipeID>/', views.upload_review, name='upload_review'),
+    path('recipes/add_to_favourites/<int:recipe_id>/', views.add_to_favourites, name='add_to_favourites'),
+    path('recipes/<int:recipe_id>/reviews/', views.recipe_reviews, name='recipe_reviews'),
+    path('most-viewed/', views.most_viewed_recipes, name='most_viewed_recipes'),
+    path('most-liked/', views.most_liked_recipes, name='most_liked_recipes'),
 ]

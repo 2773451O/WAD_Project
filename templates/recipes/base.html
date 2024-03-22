@@ -53,8 +53,8 @@
                  
         <div class="categories">
             <div class="popular">
-                <a href="#most_liked_recipes">Most Liked Recipes</a>
-                <a href="#most_viewed_recipes">Most Viewed Recipes</a>
+                <a href="{% url 'recipes:most_liked_recipes' %}">Most Liked Recipes</a>
+                <a href="{% url 'recipes:most_viewed_recipes' %}">Most Viewed Recipes</a>
             </div> 
             <form method="get" action="{% url 'recipes:search' %}">
                 <input type="text" name="query" placeholder="Search...">

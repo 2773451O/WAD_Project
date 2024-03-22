@@ -191,22 +191,18 @@ def populate():
     ]
 
     for recipe in recipes_data:
-        # Get or create categories
         category_names = recipe.get('categories')
         categories = [Category.objects.get_or_create(name=name)[0] for name in category_names]
 
-        # Get or create the author
         author_name = recipe.get('author')
         author, _ = User.objects.get_or_create(username=author_name)
 
-        # Create a copy of recipe and remove 'author' and 'categories' keys
         recipe_data_copy = recipe.copy()
         recipe_author = recipe_data_copy.pop('author')
         recipe_categories = recipe_data_copy.pop('categories')
 
-        # Create the recipe object
         recipe = Recipe.objects.create(author=author, **recipe_data_copy)
-        recipe.categories.set(categories)  # Set the categories for the recipe
+        recipe.categories.set(categories)  
 
 def clear():
     Recipe.objects.all().delete()

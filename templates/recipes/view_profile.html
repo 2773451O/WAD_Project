@@ -8,12 +8,20 @@
 </div>
 <div class="container">
     <div class="profile-info">
-        <div class="view_bio">
+        <div class="view_profile">
             <h3>Bio</h3>
             <p>{{ user_profile.bio }}</p>
         </div>
-        <h3>Favourite Recipes</h3>
-        <p>{{ user_profile.favourite_recipes }}</p>
+        <div class="view_profile">
+            <h3>Favourite Recipes</h3>
+            <ul>
+                {% for recipe in user_profile.favourite_recipes.all %}
+                    <li><a href="{% url 'recipes:goto' recipe.slug %}">{{ recipe.title }}</a></li>
+                {% empty %}
+                    <li>No favorite recipes added yet.</li>
+                {% endfor %}
+            </ul>
+        </div>
         <div class ="display_right">
         <h3>Profile Photo</h3>
             <div id="imagePreview">
@@ -26,7 +34,7 @@
         </div>
     </div>
 
-    <a href="{% url 'recipes:edit_profile' %}">Edit Profile</a>
+    <a href="{% url 'recipes:edit_profile' %}" class="submit" id="edit_profile_btn">Edit Profile</a>
 </div>
 
 {% endblock %}

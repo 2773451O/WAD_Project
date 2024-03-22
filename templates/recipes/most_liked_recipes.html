@@ -1,0 +1,13 @@
+{% extends 'recipes/base.html' %}
+
+{% block body_block %}
+<div class="recipes-list">
+    <h2>Most Liked Recipes</h2>
+    {% for recipe in recipes %}
+    <div class="recipe">
+        <h3><a href="{% url 'recipes:recipe_page' recipe.slug %}">{{ recipe.title }}</a></h3>
+        <p>Likes: {{ recipe.likes }}</p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

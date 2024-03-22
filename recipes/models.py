@@ -44,10 +44,10 @@ class Recipe(models.Model):
 
 class Review(models.Model):
     id = models.BigAutoField(primary_key=True)
-    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, null=True)
     title = models.CharField(max_length=256)
-    rating = models.CharField(max_length=30)
-    description = models.CharField(max_length = 2000, default = 'write your review here...')
+    rating = models.CharField(max_length=30, default=0)
+    description = models.TextField(max_length = 2000, default = 'Write your review here...')
     
     class Meta:
         verbose_name_plural = 'Reviews'

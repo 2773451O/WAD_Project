@@ -23,23 +23,16 @@ class SearchForm(forms.ModelForm):
         fields = ('query',)
 
 class UploadForm(forms.ModelForm):
-    #ingredients = forms.CharField(widget=forms.Textarea(attrs={'rows':3}))
-    #description = forms.CharField(widget=forms.Textarea(attrs={'rows':3}))
-    #directions = forms.CharField(widget=forms.Textarea(attrs={'rows':3}))
-
-   # likes = forms.IntegerField(widget=forms.HiddenInput(), initial=0)
     image = forms.FileField(required = False)
-   # views = forms.IntegerField(widget=forms.HiddenInput(), initial=0)
-    #user = User(initial=0)
     class Meta:
         model = Recipe
         fields = ('title','ingredients','description','directions', 'image', 'categories','author')
-        exclude = ('likes', 'views', 'author')
+        exclude = ('likes', 'views', 'author', 'description')
 
 
 class ReviewForm(forms.ModelForm):
     description = forms.CharField(widget=forms.Textarea(attrs={'rows':3}))
-    reviewId = forms.CharField(widget=forms.HiddenInput())
+    #reviewId = forms.CharField(widget=forms.HiddenInput())
     class Meta:
         model = Review
         fields = ('title','rating','description')

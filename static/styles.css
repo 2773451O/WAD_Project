@@ -498,7 +498,7 @@ textarea {
     flex-direction: column;
     max-width: 800px;
     margin: auto;
-    flex-grow: 1; /* Take up remaining space */
+    flex-grow: 1; 
     padding: 20px;
    
 }
@@ -516,7 +516,7 @@ textarea {
 }
  
 .recipe-image {
-    align-self: flex-end; /* Align image to the right */
+    align-self: flex-end; 
     max-width: 300px;
 }
  
@@ -575,4 +575,97 @@ textarea {
  
 .recipe-actions .comment-button:hover {
     background-color: #45a049;
+}
+
+/* profile pages */
+
+#edit_profile_btn {
+    text-decoration: none;
+}
+
+
+.view_fav_recipes ul {
+    list-style-position: inside; 
+}
+
+/* reviews */
+.reviews {
+    background-color: white; 
+    padding: 15px; 
+    margin-bottom: 20px; 
+    border-radius: 10px; 
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1); 
+}
+
+.checkbox label {
+    margin: 0;
+    font-weight: normal;
+    color: #333;
+    display: flex;
+    align-items: center; 
+    font-size: 18px; 
+}
+
+/* Custom checkbox appearance */
+.checkbox input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 24px; 
+    height: 24px; 
+    border: 2px solid #333;
+    border-radius: 4px;
+    margin-right: 10px;
+    position: relative;
+    cursor: pointer; 
+}
+
+.checkbox input[type="checkbox"]:checked::before {
+    content: "";
+    position: absolute;
+    top: 4px; 
+    left: 8px; 
+    width: 6px;
+    height: 12px;
+    border: solid #4CAF50;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+}
+
+.view_profile {
+    width: 35%;
+    padding: 12px 20px;
+    margin: 8px 20px;
+    border: 5px solid turquoise;
+    box-sizing: border-box;
+    display: block; 
+    font-size: 16px;
+    font-family: 'Times New Roman', Times, serif;
+    background-color: #e3dada;
+}
+
+.view_profile {
+    margin-bottom: 20px; /
+}
+
+.view_profile h3 {
+    font-size: 24px; /
+}
+
+.view_profile ul {
+    list-style-type: none; 
+    padding: 0;
+}
+
+.view_profile li a {
+    display: block; 
+    padding: 10px; 
+    border: 2px solid turquoise; 
+    border-radius: 10px; 
+    text-decoration: none; 
+    color: #007bff; 
+    margin-bottom: 10px; 
+}
+
+.view_profile li a:hover {
+    background-color: #e0f7fa; 
 }
