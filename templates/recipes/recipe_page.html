@@ -7,7 +7,7 @@
 <div class="recipe-container">
     <div class="sidebar">
         <ul>
-            {% for category in categories%}
+            {% for category in categories %}
                 <li><a href="{% url 'recipes:category_detail' category.slug %}">{{ category.name }}</a></li>
             {% endfor %}
         </ul>
@@ -18,11 +18,10 @@
             <h1>{{ recipe.title }}</h1>
             
             <div class="recipe-meta-description">  
-                <p>Cooking Time: {{ recipe.cooking_time }}</p>
-                <p>Prep Time: {{ recipe.prep_time }}</p>
-                <p>Difficulty: {{recipe.difficulty}}</p>
-                <p>Likes: {{ recipe.likes }}</p>
-                <p>Views: {{ recipe.views }}</p>      
+                <p>Cooking Time: {{ recipe.cooking_time }} mins <br>
+                Prep Time: {{ recipe.prep_time }} mins <br>
+                Likes: {{ recipe.likes }}
+                Views: {{ recipe.views }}</p>
                
             </div>
             <div>
